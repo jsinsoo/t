@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>거북이01 - 001~010번</title><style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#667085;--line:#d8e0ea;--blue:#2458d3;--good:#167448;--bad:#c63c32;--code:#101827;--soft:#eef4ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:"Malgun Gothic","Noto Sans KR",sans-serif;line-height:1.68}
+header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);padding:10px 14px}
+.bar{max-width:1280px;margin:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}h1{font-size:19px;margin:0 10px 0 0}
+input,select,button{font:inherit;border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:white}button{cursor:pointer}.primary{background:var(--blue);color:white;border-color:var(--blue);font-weight:700}
+main{max-width:1280px;margin:20px auto;padding:0 16px 80px}.intro,.q,.result{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:18px;box-shadow:0 4px 14px rgba(15,23,42,.04)}
+.intro h2{margin-top:0}.badge{display:inline-block;background:var(--soft);color:var(--blue);font-size:12px;font-weight:800;padding:4px 9px;border-radius:999px}.q h3{margin:7px 0}
+.stem{font-weight:700;margin:10px 0 12px}.code{background:var(--code);color:#e8edf5;padding:15px;border-radius:12px;overflow:auto;white-space:pre;font-size:13px;line-height:1.55}
+.choices{display:grid;gap:9px;margin-top:14px}.choice{border:1px solid var(--line);border-radius:10px;padding:11px 12px;background:#fbfcfe}.choice input{margin-right:8px}
+.choice.answer{background:#eefaf3;border-color:#8bc8a7}.choice.badpick{background:#fff1ef;border-color:#e1a29c}.explain{display:none;border-top:1px dashed var(--line);margin-top:14px;padding-top:12px}.explain.show{display:block}
+.good{color:var(--good);font-weight:800}.bad{color:var(--bad);font-weight:800}.muted{color:var(--muted);font-size:13px}.progress{font-weight:800;color:var(--blue)}
+.actions{position:sticky;bottom:10px;z-index:25;background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 25px rgba(15,23,42,.13);padding:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.hidden{display:none}
+@media(max-width:720px){.q{padding:14px}.code{font-size:11.5px}h1{font-size:16px}}@media print{header,.actions{display:none}.q{break-inside:avoid;box-shadow:none}body{background:#fff}}
+</style></head>
+<body>
+<header><div class="bar"><h1>거북이01 · 001~010번</h1>
+<input id="no" placeholder="학번"><input id="name" placeholder="이름">
+<select onchange="jumpQ(this.value)"><option value="">문항 이동</option><option value="1">001번</option><option value="2">002번</option><option value="3">003번</option><option value="4">004번</option><option value="5">005번</option><option value="6">006번</option><option value="7">007번</option><option value="8">008번</option><option value="9">009번</option><option value="10">010번</option></select>
+<span id="prog" class="progress">완료 0 / 10</span></div></header>
+<main>
+<section class="intro"><h2>거북이01 코드 분석 평가</h2>
+<p>원본 100문항 중 번호순 001~010번을 수록했습니다. 각 문항은 5개 보기 중 옳은 설명 3개를 정확히 선택해야 1점입니다.</p>
+<p>채점 후 각 보기의 정오답과 상세 해설을 확인할 수 있으며, 결과는 <b>학번_이름_점수_거북이01_응시시각.txt</b> 형식으로 저장됩니다.</p></section>
+
+<section class="q" id="q1">
+  <span class="badge">001 / 100 · 거북이01</span>
+  <h3>001. 거북이 창 열기</h3>
+  <div class="stem">다음 「거북이 창 열기」 코드에서 실행순서 추적의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+turtle.done()</code></pre>
+  <div class="choices" id="c1"><label class="choice"><input type="checkbox" name="q1" value="1" onchange="limit(1,this)"><b>1.</b> 이 프로그램은 별도의 Turtle 객체를 생성하지 않아도 그래픽 창 자체는 열 수 있다.</label><label class="choice"><input type="checkbox" name="q1" value="2" onchange="limit(1,this)"><b>2.</b> `turtle.done()`은 거북이를 정확히 100픽셀 이동시키는 명령이다.</label><label class="choice"><input type="checkbox" name="q1" value="3" onchange="limit(1,this)"><b>3.</b> 코드에는 이동 명령이 없으므로 실행 직후 선이나 도형은 새로 그려지지 않는다.</label><label class="choice"><input type="checkbox" name="q1" value="4" onchange="limit(1,this)"><b>4.</b> 이 코드는 실행하자마자 자동으로 정사각형을 그린다.</label><label class="choice"><input type="checkbox" name="q1" value="5" onchange="limit(1,this)"><b>5.</b> `turtle.done()` 이후에는 사용자가 창을 닫기 전까지 이벤트를 처리할 수 있다.</label></div>
+  <div class="explain" id="e1"></div>
+</section>
+<section class="q" id="q2">
+  <span class="badge">002 / 100 · 거북이01</span>
+  <h3>002. 거북이 만들기</h3>
+  <div class="stem">다음 「거북이 만들기」 코드에서 최종상태 예측의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+
+turtle.done()</code></pre>
+  <div class="choices" id="c2"><label class="choice"><input type="checkbox" name="q2" value="1" onchange="limit(2,this)"><b>1.</b> `t`에는 `Turtle` 클래스에서 만들어진 한 개의 객체가 저장된다.</label><label class="choice"><input type="checkbox" name="q2" value="2" onchange="limit(2,this)"><b>2.</b> 이 시점의 거북이는 아직 forward나 goto 명령을 받지 않았으므로 위치 이동은 없다.</label><label class="choice"><input type="checkbox" name="q2" value="3" onchange="limit(2,this)"><b>3.</b> `t = turtle.Turtle()`은 숫자형 변수 t에 0을 저장하는 문장이다.</label><label class="choice"><input type="checkbox" name="q2" value="4" onchange="limit(2,this)"><b>4.</b> 이후 `t.forward(...)`처럼 변수 t를 통해 해당 객체의 메서드를 호출할 수 있다.</label><label class="choice"><input type="checkbox" name="q2" value="5" onchange="limit(2,this)"><b>5.</b> Turtle 객체를 만들면 자동으로 원 한 개가 그려진다.</label></div>
+  <div class="explain" id="e2"></div>
+</section>
+<section class="q" id="q3">
+  <span class="badge">003 / 100 · 거북이01</span>
+  <h3>003. 앞으로 이동하기</h3>
+  <div class="stem">다음 「앞으로 이동하기」 코드에서 수치 계산의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+t.forward(100)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c3"><label class="choice"><input type="checkbox" name="q3" value="1" onchange="limit(3,this)"><b>1.</b> `forward(100)` 뒤 거북이는 자동으로 90도 회전한다.</label><label class="choice"><input type="checkbox" name="q3" value="2" onchange="limit(3,this)"><b>2.</b> 기본 시작 방향이 0도라면 선은 화면 중심에서 오른쪽으로 뻗는다.</label><label class="choice"><input type="checkbox" name="q3" value="3" onchange="limit(3,this)"><b>3.</b> 100은 이동 속도를 의미하므로 실제 이동 거리는 항상 1이다.</label><label class="choice"><input type="checkbox" name="q3" value="4" onchange="limit(3,this)"><b>4.</b> 이동 후 거북이의 x좌표는 시작점 기준으로 100 증가한다.</label><label class="choice"><input type="checkbox" name="q3" value="5" onchange="limit(3,this)"><b>5.</b> 펜을 들지 않았으므로 이동 경로가 선으로 남는다.</label></div>
+  <div class="explain" id="e3"></div>
+</section>
+<section class="q" id="q4">
+  <span class="badge">004 / 100 · 거북이01</span>
+  <h3>004. 뒤로 이동하기</h3>
+  <div class="stem">다음 「뒤로 이동하기」 코드에서 명령의 역할 구분의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+t.backward(100)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c4"><label class="choice"><input type="checkbox" name="q4" value="1" onchange="limit(4,this)"><b>1.</b> 기본 방향이 오른쪽이라면 `backward(100)` 후 위치는 대략 (-100, 0)이다.</label><label class="choice"><input type="checkbox" name="q4" value="2" onchange="limit(4,this)"><b>2.</b> backward는 left(180)과 완전히 같은 명령이라 위치는 변하지 않는다.</label><label class="choice"><input type="checkbox" name="q4" value="3" onchange="limit(4,this)"><b>3.</b> 뒤로 이동해도 heading 값 자체는 바뀌지 않는다.</label><label class="choice"><input type="checkbox" name="q4" value="4" onchange="limit(4,this)"><b>4.</b> 기본 펜 상태에서는 원점과 새 위치 사이에 선이 그려진다.</label><label class="choice"><input type="checkbox" name="q4" value="5" onchange="limit(4,this)"><b>5.</b> 실행 뒤 x좌표는 +100이 된다.</label></div>
+  <div class="explain" id="e4"></div>
+</section>
+<section class="q" id="q5">
+  <span class="badge">005 / 100 · 거북이01</span>
+  <h3>005. 왼쪽으로 회전</h3>
+  <div class="stem">다음 「왼쪽으로 회전」 코드에서 코드 수정 영향의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+t.forward(100)
+t.left(90)
+t.forward(100)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c5"><label class="choice"><input type="checkbox" name="q5" value="1" onchange="limit(5,this)"><b>1.</b> 최종 위치는 다시 원점이다.</label><label class="choice"><input type="checkbox" name="q5" value="2" onchange="limit(5,this)"><b>2.</b> 첫 선분을 그린 뒤 heading은 90도가 된다.</label><label class="choice"><input type="checkbox" name="q5" value="3" onchange="limit(5,this)"><b>3.</b> 두 번째 선분은 첫 선분의 끝점에서 위쪽으로 그려진다.</label><label class="choice"><input type="checkbox" name="q5" value="4" onchange="limit(5,this)"><b>4.</b> `left(90)`은 시계 방향 회전이므로 두 번째 선은 아래로 향한다.</label><label class="choice"><input type="checkbox" name="q5" value="5" onchange="limit(5,this)"><b>5.</b> 두 선분은 서로 수직이다.</label></div>
+  <div class="explain" id="e5"></div>
+</section>
+<section class="q" id="q6">
+  <span class="badge">006 / 100 · 거북이01</span>
+  <h3>006. 오른쪽으로 회전</h3>
+  <div class="stem">다음 「오른쪽으로 회전」 코드에서 좌표 해석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+t.forward(100)
+t.right(90)
+t.forward(100)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c6"><label class="choice"><input type="checkbox" name="q6" value="1" onchange="limit(6,this)"><b>1.</b> 첫 이동 후 `right(90)` 때문에 거북이는 아래쪽을 향한다.</label><label class="choice"><input type="checkbox" name="q6" value="2" onchange="limit(6,this)"><b>2.</b> 최종 heading은 90도이다.</label><label class="choice"><input type="checkbox" name="q6" value="3" onchange="limit(6,this)"><b>3.</b> 두 번째 forward는 첫 번째 선 위를 정확히 되짚는다.</label><label class="choice"><input type="checkbox" name="q6" value="4" onchange="limit(6,this)"><b>4.</b> 두 번째 선분은 첫 번째 선분과 직각을 이룬다.</label><label class="choice"><input type="checkbox" name="q6" value="5" onchange="limit(6,this)"><b>5.</b> 기본 좌표에서 최종 y좌표는 음수가 된다.</label></div>
+  <div class="explain" id="e6"></div>
+</section>
+<section class="q" id="q7">
+  <span class="badge">007 / 100 · 거북이01</span>
+  <h3>007. 펜 들기와 내리기</h3>
+  <div class="stem">다음 「펜 들기와 내리기」 코드에서 방향각 해석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+
+t.forward(50)
+t.penup()
+t.forward(50)
+t.pendown()
+t.forward(50)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c7"><label class="choice"><input type="checkbox" name="q7" value="1" onchange="limit(7,this)"><b>1.</b> 처음 50만큼 이동한 구간에는 선이 그려진다.</label><label class="choice"><input type="checkbox" name="q7" value="2" onchange="limit(7,this)"><b>2.</b> 두 번째 50 이동은 위치는 변하지만 화면에 선을 남기지 않는다.</label><label class="choice"><input type="checkbox" name="q7" value="3" onchange="limit(7,this)"><b>3.</b> 총 위치 변화는 50뿐이다.</label><label class="choice"><input type="checkbox" name="q7" value="4" onchange="limit(7,this)"><b>4.</b> penup은 거북이를 원점으로 순간 이동시키는 명령이다.</label><label class="choice"><input type="checkbox" name="q7" value="5" onchange="limit(7,this)"><b>5.</b> 마지막 50 이동은 다시 선으로 표시된다.</label></div>
+  <div class="explain" id="e7"></div>
+</section>
+<section class="q" id="q8">
+  <span class="badge">008 / 100 · 거북이01</span>
+  <h3>008. 좌표로 이동하기</h3>
+  <div class="stem">다음 「좌표로 이동하기」 코드에서 반복횟수 분석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+
+t.goto(100, 100)
+t.goto(-100, 100)
+t.goto(0, 0)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c8"><label class="choice"><input type="checkbox" name="q8" value="1" onchange="limit(8,this)"><b>1.</b> 두 번째 goto 뒤 위치는 (0, 200)이다.</label><label class="choice"><input type="checkbox" name="q8" value="2" onchange="limit(8,this)"><b>2.</b> 세 번째 `goto(0, 0)`으로 최종 위치는 원점이 된다.</label><label class="choice"><input type="checkbox" name="q8" value="3" onchange="limit(8,this)"><b>3.</b> 첫 두 이동을 연결하면 y=100인 수평 선분이 한 구간 포함된다.</label><label class="choice"><input type="checkbox" name="q8" value="4" onchange="limit(8,this)"><b>4.</b> `goto()` 인수는 현재 위치에 더해지는 상대 변위가 아니라 목표 절대좌표이다.</label><label class="choice"><input type="checkbox" name="q8" value="5" onchange="limit(8,this)"><b>5.</b> 세 번의 goto는 모두 동일한 점으로 이동한다.</label></div>
+  <div class="explain" id="e8"></div>
+</section>
+<section class="q" id="q9">
+  <span class="badge">009 / 100 · 거북이01</span>
+  <h3>009. 거북이 모양 바꾸기</h3>
+  <div class="stem">다음 「거북이 모양 바꾸기」 코드에서 함수 호출 분석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+t.shape(&quot;turtle&quot;)
+t.forward(100)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c9"><label class="choice"><input type="checkbox" name="q9" value="1" onchange="limit(9,this)"><b>1.</b> `shape(&#x27;turtle&#x27;)`은 커서 외형을 거북이 모양으로 바꾼다.</label><label class="choice"><input type="checkbox" name="q9" value="2" onchange="limit(9,this)"><b>2.</b> 모양을 바꾼 뒤에도 `forward(100)`의 이동 규칙은 그대로이다.</label><label class="choice"><input type="checkbox" name="q9" value="3" onchange="limit(9,this)"><b>3.</b> 이 예제에서는 거북이 모양이 이동한 최종 위치에서 보인다.</label><label class="choice"><input type="checkbox" name="q9" value="4" onchange="limit(9,this)"><b>4.</b> shape를 turtle로 바꾸면 펜 색이 자동으로 녹색이 된다.</label><label class="choice"><input type="checkbox" name="q9" value="5" onchange="limit(9,this)"><b>5.</b> shape 명령은 원을 그리는 명령이므로 forward는 실행되지 않는다.</label></div>
+  <div class="explain" id="e9"></div>
+</section>
+<section class="q" id="q10">
+  <span class="badge">010 / 100 · 거북이01</span>
+  <h3>010. 속도 조절하기</h3>
+  <div class="stem">다음 「속도 조절하기」 코드에서 자료 흐름 분석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+t.speed(3)
+
+for _ in range(4):
+    t.forward(100)
+    t.left(90)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c10"><label class="choice"><input type="checkbox" name="q10" value="1" onchange="limit(10,this)"><b>1.</b> speed 값을 0으로 바꾸면 정사각형의 변 길이가 0이 된다.</label><label class="choice"><input type="checkbox" name="q10" value="2" onchange="limit(10,this)"><b>2.</b> 반복이 끝난 뒤 거북이 방향은 처음과 180도 차이가 난다.</label><label class="choice"><input type="checkbox" name="q10" value="3" onchange="limit(10,this)"><b>3.</b> 정사각형을 완성하는 동안 forward는 네 번 호출된다.</label><label class="choice"><input type="checkbox" name="q10" value="4" onchange="limit(10,this)"><b>4.</b> 각 회전이 90도이므로 네 번의 회전 합은 360도이다.</label><label class="choice"><input type="checkbox" name="q10" value="5" onchange="limit(10,this)"><b>5.</b> `speed(3)`은 그림의 기하학적 크기를 바꾸지 않는다.</label></div>
+  <div class="explain" id="e10"></div>
+</section>
+<div class="actions"><button onclick="findMissing()">미완료 확인</button><button class="primary" onclick="grade()">채점하기</button><button id="save" class="hidden" onclick="saveTxt()">TXT 저장</button></div>
+<section id="result" class="result hidden"></section>
+</main><script>
+const Q=[{"id": 1, "title": "거북이 창 열기", "desc": "turtle 모듈을 불러오고 그래픽 창을 유지하는 가장 기본적인 코드입니다.", "code": "import turtle\n\nturtle.done()", "stem": "다음 「거북이 창 열기」 코드에서 실행순서 추적의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "이 프로그램은 별도의 Turtle 객체를 생성하지 않아도 그래픽 창 자체는 열 수 있다.", "correct": 1, "explanation": "`turtle.done()`은 기본 화면의 이벤트 루프를 시작할 수 있습니다."}, {"text": "`turtle.done()`은 거북이를 정확히 100픽셀 이동시키는 명령이다.", "correct": 0, "explanation": "이동 명령이 아니라 이벤트 루프 종료 대기 역할입니다."}, {"text": "코드에는 이동 명령이 없으므로 실행 직후 선이나 도형은 새로 그려지지 않는다.", "correct": 1, "explanation": "forward, goto, circle 같은 그리기 이동이 없습니다."}, {"text": "이 코드는 실행하자마자 자동으로 정사각형을 그린다.", "correct": 0, "explanation": "도형을 그리는 명령이 없습니다."}, {"text": "`turtle.done()` 이후에는 사용자가 창을 닫기 전까지 이벤트를 처리할 수 있다.", "correct": 1, "explanation": "done()은 Tk/Turtle 이벤트 루프를 유지합니다."}], "correct_positions": [1, 3, 5]}, {"id": 2, "title": "거북이 만들기", "desc": "실제로 움직일 거북이 객체를 하나 생성합니다.", "code": "import turtle\n\nt = turtle.Turtle()\n\nturtle.done()", "stem": "다음 「거북이 만들기」 코드에서 최종상태 예측의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "`t`에는 `Turtle` 클래스에서 만들어진 한 개의 객체가 저장된다.", "correct": 1, "explanation": "`turtle.Turtle()`의 반환값이 변수 t에 대입됩니다."}, {"text": "이 시점의 거북이는 아직 forward나 goto 명령을 받지 않았으므로 위치 이동은 없다.", "correct": 1, "explanation": "객체 생성 외에 이동 명령이 없습니다."}, {"text": "`t = turtle.Turtle()`은 숫자형 변수 t에 0을 저장하는 문장이다.", "correct": 0, "explanation": "Turtle 인스턴스를 생성합니다."}, {"text": "이후 `t.forward(...)`처럼 변수 t를 통해 해당 객체의 메서드를 호출할 수 있다.", "correct": 1, "explanation": "t는 Turtle 인스턴스를 참조합니다."}, {"text": "Turtle 객체를 만들면 자동으로 원 한 개가 그려진다.", "correct": 0, "explanation": "객체 생성 자체가 원을 그리지는 않습니다."}], "correct_positions": [1, 2, 4]}, {"id": 3, "title": "앞으로 이동하기", "desc": "거북이를 현재 바라보는 방향으로 100픽셀 이동시킵니다.", "code": "import turtle\n\nt = turtle.Turtle()\nt.forward(100)\n\nturtle.done()", "stem": "다음 「앞으로 이동하기」 코드에서 수치 계산의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "`forward(100)` 뒤 거북이는 자동으로 90도 회전한다.", "correct": 0, "explanation": "forward는 방향을 바꾸지 않습니다."}, {"text": "기본 시작 방향이 0도라면 선은 화면 중심에서 오른쪽으로 뻗는다.", "correct": 1, "explanation": "기본 heading 0도는 +x 방향입니다."}, {"text": "100은 이동 속도를 의미하므로 실제 이동 거리는 항상 1이다.", "correct": 0, "explanation": "100은 이동 거리입니다."}, {"text": "이동 후 거북이의 x좌표는 시작점 기준으로 100 증가한다.", "correct": 1, "explanation": "오른쪽으로 100 이동합니다."}, {"text": "펜을 들지 않았으므로 이동 경로가 선으로 남는다.", "correct": 1, "explanation": "Turtle은 기본적으로 펜이 내려가 있습니다."}], "correct_positions": [2, 4, 5]}, {"id": 4, "title": "뒤로 이동하기", "desc": "거북이를 현재 방향의 반대로 이동시킵니다.", "code": "import turtle\n\nt = turtle.Turtle()\nt.backward(100)\n\nturtle.done()", "stem": "다음 「뒤로 이동하기」 코드에서 명령의 역할 구분의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "기본 방향이 오른쪽이라면 `backward(100)` 후 위치는 대략 (-100, 0)이다.", "correct": 1, "explanation": "현재 방향의 반대로 100 이동합니다."}, {"text": "backward는 left(180)과 완전히 같은 명령이라 위치는 변하지 않는다.", "correct": 0, "explanation": "backward는 실제로 위치를 이동시킵니다."}, {"text": "뒤로 이동해도 heading 값 자체는 바뀌지 않는다.", "correct": 1, "explanation": "backward는 방향을 유지합니다."}, {"text": "기본 펜 상태에서는 원점과 새 위치 사이에 선이 그려진다.", "correct": 1, "explanation": "기본 pendown 상태입니다."}, {"text": "실행 뒤 x좌표는 +100이 된다.", "correct": 0, "explanation": "기본 방향에서 뒤로 가므로 -100 쪽입니다."}], "correct_positions": [1, 3, 4]}, {"id": 5, "title": "왼쪽으로 회전", "desc": "왼쪽으로 90도 회전하여 ㄴ자 모양의 선을 그립니다.", "code": "import turtle\n\nt = turtle.Turtle()\nt.forward(100)\nt.left(90)\nt.forward(100)\n\nturtle.done()", "stem": "다음 「왼쪽으로 회전」 코드에서 코드 수정 영향의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "최종 위치는 다시 원점이다.", "correct": 0, "explanation": "두 번의 전진만 있으므로 원점으로 돌아오지 않습니다."}, {"text": "첫 선분을 그린 뒤 heading은 90도가 된다.", "correct": 1, "explanation": "0도에서 left(90)을 실행합니다."}, {"text": "두 번째 선분은 첫 선분의 끝점에서 위쪽으로 그려진다.", "correct": 1, "explanation": "90도 방향으로 전진합니다."}, {"text": "`left(90)`은 시계 방향 회전이므로 두 번째 선은 아래로 향한다.", "correct": 0, "explanation": "left는 반시계 방향입니다."}, {"text": "두 선분은 서로 수직이다.", "correct": 1, "explanation": "방향 차이가 90도입니다."}], "correct_positions": [2, 3, 5]}, {"id": 6, "title": "오른쪽으로 회전", "desc": "오른쪽으로 90도 회전하여 꺾인 선을 그립니다.", "code": "import turtle\n\nt = turtle.Turtle()\nt.forward(100)\nt.right(90)\nt.forward(100)\n\nturtle.done()", "stem": "다음 「오른쪽으로 회전」 코드에서 좌표 해석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "첫 이동 후 `right(90)` 때문에 거북이는 아래쪽을 향한다.", "correct": 1, "explanation": "0도에서 시계 방향 90도는 270도, 즉 아래쪽입니다."}, {"text": "최종 heading은 90도이다.", "correct": 0, "explanation": "오른쪽 90도 회전은 270도입니다."}, {"text": "두 번째 forward는 첫 번째 선 위를 정확히 되짚는다.", "correct": 0, "explanation": "진행 방향이 180도 반대가 아니라 90도 차이입니다."}, {"text": "두 번째 선분은 첫 번째 선분과 직각을 이룬다.", "correct": 1, "explanation": "90도 회전했기 때문입니다."}, {"text": "기본 좌표에서 최종 y좌표는 음수가 된다.", "correct": 1, "explanation": "두 번째 이동이 아래쪽입니다."}], "correct_positions": [1, 4, 5]}, {"id": 7, "title": "펜 들기와 내리기", "desc": "선을 그리지 않고 이동하는 방법을 배웁니다.", "code": "import turtle\n\nt = turtle.Turtle()\n\nt.forward(50)\nt.penup()\nt.forward(50)\nt.pendown()\nt.forward(50)\n\nturtle.done()", "stem": "다음 「펜 들기와 내리기」 코드에서 방향각 해석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "처음 50만큼 이동한 구간에는 선이 그려진다.", "correct": 1, "explanation": "초기 펜 상태는 down입니다."}, {"text": "두 번째 50 이동은 위치는 변하지만 화면에 선을 남기지 않는다.", "correct": 1, "explanation": "penup 상태에서 이동합니다."}, {"text": "총 위치 변화는 50뿐이다.", "correct": 0, "explanation": "세 번 각각 50 이동하므로 총 150만큼 전진합니다."}, {"text": "penup은 거북이를 원점으로 순간 이동시키는 명령이다.", "correct": 0, "explanation": "선 그리기 상태만 바꿉니다."}, {"text": "마지막 50 이동은 다시 선으로 표시된다.", "correct": 1, "explanation": "pendown 이후의 이동입니다."}], "correct_positions": [1, 2, 5]}, {"id": 8, "title": "좌표로 이동하기", "desc": "절대 좌표를 이용해 원하는 위치로 이동합니다.", "code": "import turtle\n\nt = turtle.Turtle()\n\nt.goto(100, 100)\nt.goto(-100, 100)\nt.goto(0, 0)\n\nturtle.done()", "stem": "다음 「좌표로 이동하기」 코드에서 반복횟수 분석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "두 번째 goto 뒤 위치는 (0, 200)이다.", "correct": 0, "explanation": "목표는 (-100,100)입니다."}, {"text": "세 번째 `goto(0, 0)`으로 최종 위치는 원점이 된다.", "correct": 1, "explanation": "절대좌표 (0,0)으로 이동합니다."}, {"text": "첫 두 이동을 연결하면 y=100인 수평 선분이 한 구간 포함된다.", "correct": 1, "explanation": "(100,100)에서 (-100,100)으로 이동합니다."}, {"text": "`goto()` 인수는 현재 위치에 더해지는 상대 변위가 아니라 목표 절대좌표이다.", "correct": 1, "explanation": "Turtle의 goto는 절대 좌표 이동입니다."}, {"text": "세 번의 goto는 모두 동일한 점으로 이동한다.", "correct": 0, "explanation": "세 목표 좌표가 서로 다릅니다."}], "correct_positions": [2, 3, 4]}, {"id": 9, "title": "거북이 모양 바꾸기", "desc": "거북이 커서를 실제 거북이 모양으로 표시합니다.", "code": "import turtle\n\nt = turtle.Turtle()\nt.shape(\"turtle\")\nt.forward(100)\n\nturtle.done()", "stem": "다음 「거북이 모양 바꾸기」 코드에서 함수 호출 분석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "`shape('turtle')`은 커서 외형을 거북이 모양으로 바꾼다.", "correct": 1, "explanation": "그래픽 커서의 shape를 변경합니다."}, {"text": "모양을 바꾼 뒤에도 `forward(100)`의 이동 규칙은 그대로이다.", "correct": 1, "explanation": "shape는 이동 알고리즘에 영향을 주지 않습니다."}, {"text": "이 예제에서는 거북이 모양이 이동한 최종 위치에서 보인다.", "correct": 1, "explanation": "hideturtle 호출이 없으므로 커서가 보입니다."}, {"text": "shape를 turtle로 바꾸면 펜 색이 자동으로 녹색이 된다.", "correct": 0, "explanation": "shape 변경과 펜 색은 별개입니다."}, {"text": "shape 명령은 원을 그리는 명령이므로 forward는 실행되지 않는다.", "correct": 0, "explanation": "shape는 외형 설정입니다."}], "correct_positions": [1, 2, 3]}, {"id": 10, "title": "속도 조절하기", "desc": "거북이가 그리는 속도를 조절합니다.", "code": "import turtle\n\nt = turtle.Turtle()\nt.speed(3)\n\nfor _ in range(4):\n    t.forward(100)\n    t.left(90)\n\nturtle.done()", "stem": "다음 「속도 조절하기」 코드에서 자료 흐름 분석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "speed 값을 0으로 바꾸면 정사각형의 변 길이가 0이 된다.", "correct": 0, "explanation": "speed(0)은 빠른 그리기 설정입니다."}, {"text": "반복이 끝난 뒤 거북이 방향은 처음과 180도 차이가 난다.", "correct": 0, "explanation": "360도 회전해 처음 방향과 같습니다."}, {"text": "정사각형을 완성하는 동안 forward는 네 번 호출된다.", "correct": 1, "explanation": "range(4) 안에 forward가 한 번 있습니다."}, {"text": "각 회전이 90도이므로 네 번의 회전 합은 360도이다.", "correct": 1, "explanation": "4×90=360입니다."}, {"text": "`speed(3)`은 그림의 기하학적 크기를 바꾸지 않는다.", "correct": 1, "explanation": "속도는 애니메이션 속도만 조절합니다."}], "correct_positions": [3, 4, 5]}];
+const SETNAME="거북이01";
+let RESULT=null;
+const esc=s=>s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+function selected(id){return [...document.querySelectorAll(`input[name=q${id}]:checked`)].map(x=>+x.value)}
+function jumpQ(n){if(n)document.getElementById('q'+n).scrollIntoView({behavior:'smooth',block:'start'})}
+function limit(id,x){if(selected(id).length>3){x.checked=false;alert('한 문항에서는 3개까지만 선택할 수 있습니다.')}progress()}
+function progress(){document.getElementById('prog').textContent=`완료 ${Q.filter(q=>selected(q.id).length===3).length} / 10`}
+function findMissing(){
+ const m=Q.filter(q=>selected(q.id).length!==3);
+ if(!m.length){alert('10문항 모두 3개 선택을 완료했습니다.');return}
+ alert('미완료 문항: '+m.map(x=>String(x.id).padStart(3,'0')).join(', '));jumpQ(m[0].id);
+}
+function grade(){
+ const no=document.getElementById('no').value.trim(), name=document.getElementById('name').value.trim();
+ if(!no||!name){alert('학번과 이름을 입력해 주세요.');return}
+ const m=Q.filter(q=>selected(q.id).length!==3);
+ if(m.length){alert('아직 3개를 선택하지 않은 문항이 있습니다.');jumpQ(m[0].id);return}
+ let score=0, detail=[];
+ Q.forEach(q=>{
+   const u=selected(q.id).sort((a,b)=>a-b), a=q.correct_positions.slice().sort((a,b)=>a-b);
+   const ok=JSON.stringify(u)===JSON.stringify(a); if(ok)score++;
+   const labels=document.querySelectorAll(`#c${q.id} .choice`);
+   q.options.forEach((o,k)=>{
+     labels[k].classList.remove('answer','badpick');
+     if(o.correct)labels[k].classList.add('answer'); else if(u.includes(k+1))labels[k].classList.add('badpick');
+   });
+   const e=document.getElementById('e'+q.id);
+   e.innerHTML=`<div class="${ok?'good':'bad'}">${ok?'정답':'오답'} · 선택 ${u.join(', ')} · 정답 ${a.join(', ')}</div>
+   <p><b>문제 풀이</b> — 이 문제는 「${esc(q.title)}」 코드 자체의 실행 흐름을 근거로 판단합니다.</p>
+   <ol>${q.options.map((o,k)=>`<li><b>${k+1}번 ${o.correct?'[옳음]':'[틀림]'}</b> — ${esc(o.explanation)}</li>`).join('')}</ol>`;
+   e.classList.add('show');
+   detail.push({id:q.id,title:q.title,stem:q.stem,u,a,ok,options:q.options});
+ });
+ RESULT={no,name,score,detail,time:new Date()};
+ const r=document.getElementById('result');
+ r.classList.remove('hidden');
+ r.innerHTML=`<h2>채점 결과</h2><p><b>${esc(no)} ${esc(name)}</b> · <b>${score}점 / 10점</b></p><p>정답 ${score}문항, 오답 ${10-score}문항입니다.</p>`;
+ document.getElementById('save').classList.remove('hidden');
+ r.scrollIntoView({behavior:'smooth'});
+}
+const pad=n=>String(n).padStart(2,'0');
+const ts=d=>`${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}`;
+const ht=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+const safe=s=>s.replace(/[\\/:*?"<>|]/g,'_').replace(/\s+/g,'_');
+function saveTxt(){
+ if(!RESULT)return;
+ const r=RESULT,L=[];
+ L.push(`IDLE Python Turtle ${SETNAME} 평가 결과`,'='.repeat(64),`학번: ${r.no}`,`이름: ${r.name}`,`점수: ${r.score} / 10`,`응시시각: ${ht(r.time)}`,`범위: 001번 ~ 010번`,'형식: 코드별 옳은 것 3개 고르기 5지선다형','='.repeat(64),'');
+ r.detail.forEach(d=>{
+   L.push(`[${String(d.id).padStart(3,'0')}번] ${d.title}`,`문제: ${d.stem}`,`판정: ${d.ok?'정답':'오답'}`,`내 선택: ${d.u.join(', ')}`,`정답: ${d.a.join(', ')}`,'보기별 풀이:');
+   d.options.forEach((o,k)=>L.push(`  ${k+1}. ${o.correct?'[옳음]':'[틀림]'} ${o.text}`,`     해설: ${o.explanation}`));
+   L.push('-'.repeat(64));
+ });
+ const blob=new Blob([L.join('\n')],{type:'text/plain;charset=utf-8'});
+ const a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);
+ a.download=`${safe(r.no)}_${safe(r.name)}_${r.score}_${SETNAME}_${ts(r.time)}.txt`;
+ document.body.appendChild(a);a.click();URL.revokeObjectURL(a.href);a.remove();
+}
+progress();
+</script></body></html>

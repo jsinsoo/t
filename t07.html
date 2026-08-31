@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>거북이07 - 061~070번</title><style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#667085;--line:#d8e0ea;--blue:#2458d3;--good:#167448;--bad:#c63c32;--code:#101827;--soft:#eef4ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:"Malgun Gothic","Noto Sans KR",sans-serif;line-height:1.68}
+header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);padding:10px 14px}
+.bar{max-width:1280px;margin:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}h1{font-size:19px;margin:0 10px 0 0}
+input,select,button{font:inherit;border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:white}button{cursor:pointer}.primary{background:var(--blue);color:white;border-color:var(--blue);font-weight:700}
+main{max-width:1280px;margin:20px auto;padding:0 16px 80px}.intro,.q,.result{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:18px;box-shadow:0 4px 14px rgba(15,23,42,.04)}
+.intro h2{margin-top:0}.badge{display:inline-block;background:var(--soft);color:var(--blue);font-size:12px;font-weight:800;padding:4px 9px;border-radius:999px}.q h3{margin:7px 0}
+.stem{font-weight:700;margin:10px 0 12px}.code{background:var(--code);color:#e8edf5;padding:15px;border-radius:12px;overflow:auto;white-space:pre;font-size:13px;line-height:1.55}
+.choices{display:grid;gap:9px;margin-top:14px}.choice{border:1px solid var(--line);border-radius:10px;padding:11px 12px;background:#fbfcfe}.choice input{margin-right:8px}
+.choice.answer{background:#eefaf3;border-color:#8bc8a7}.choice.badpick{background:#fff1ef;border-color:#e1a29c}.explain{display:none;border-top:1px dashed var(--line);margin-top:14px;padding-top:12px}.explain.show{display:block}
+.good{color:var(--good);font-weight:800}.bad{color:var(--bad);font-weight:800}.muted{color:var(--muted);font-size:13px}.progress{font-weight:800;color:var(--blue)}
+.actions{position:sticky;bottom:10px;z-index:25;background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 25px rgba(15,23,42,.13);padding:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.hidden{display:none}
+@media(max-width:720px){.q{padding:14px}.code{font-size:11.5px}h1{font-size:16px}}@media print{header,.actions{display:none}.q{break-inside:avoid;box-shadow:none}body{background:#fff}}
+</style></head>
+<body>
+<header><div class="bar"><h1>거북이07 · 061~070번</h1>
+<input id="no" placeholder="학번"><input id="name" placeholder="이름">
+<select onchange="jumpQ(this.value)"><option value="">문항 이동</option><option value="61">061번</option><option value="62">062번</option><option value="63">063번</option><option value="64">064번</option><option value="65">065번</option><option value="66">066번</option><option value="67">067번</option><option value="68">068번</option><option value="69">069번</option><option value="70">070번</option></select>
+<span id="prog" class="progress">완료 0 / 10</span></div></header>
+<main>
+<section class="intro"><h2>거북이07 코드 분석 평가</h2>
+<p>원본 100문항 중 번호순 061~070번을 수록했습니다. 각 문항은 5개 보기 중 옳은 설명 3개를 정확히 선택해야 1점입니다.</p>
+<p>채점 후 각 보기의 정오답과 상세 해설을 확인할 수 있으며, 결과는 <b>학번_이름_점수_거북이07_응시시각.txt</b> 형식으로 저장됩니다.</p></section>
+
+<section class="q" id="q61">
+  <span class="badge">061 / 100 · 거북이07</span>
+  <h3>061. 재귀 나선</h3>
+  <div class="stem">다음 「재귀 나선」 코드에서 오류 원인 판별의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+
+def spiral(length):
+    if length &gt; 200:
+        return
+
+    t.forward(length)
+    t.left(90)
+
+    spiral(length + 5)
+
+spiral(10)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c61"><label class="choice"><input type="checkbox" name="q61" value="1" onchange="limit(61,this)"><b>1.</b> 재귀가 진행될수록 length가 5씩 커지고 200을 초과하면 더 이상 그리지 않는다.</label><label class="choice"><input type="checkbox" name="q61" value="2" onchange="limit(61,this)"><b>2.</b> 이 코드에서 ‘재귀 나선’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.</label><label class="choice"><input type="checkbox" name="q61" value="3" onchange="limit(61,this)"><b>3.</b> 함수 정의를 사용해 ‘재귀 나선’의 핵심 동작을 이름 있는 기능 단위로 분리했다.</label><label class="choice"><input type="checkbox" name="q61" value="4" onchange="limit(61,this)"><b>4.</b> 「재귀 나선」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.</label><label class="choice"><input type="checkbox" name="q61" value="5" onchange="limit(61,this)"><b>5.</b> 「재귀 나선」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.</label></div>
+  <div class="explain" id="e61"></div>
+</section>
+<section class="q" id="q62">
+  <span class="badge">062 / 100 · 거북이07</span>
+  <h3>062. 재귀 나무</h3>
+  <div class="stem">다음 「재귀 나무」 코드에서 출력 위치 구분의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+t.left(90)
+t.speed(0)
+
+def tree(length, depth):
+    if depth == 0:
+        return
+
+    t.forward(length)
+    t.left(30)
+
+    tree(length * 0.7, depth - 1)
+
+    t.right(60)
+
+    tree(length * 0.7, depth - 1)
+
+    t.left(30)
+    t.backward(length)
+
+tree(100, 6)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c62"><label class="choice"><input type="checkbox" name="q62" value="1" onchange="limit(62,this)"><b>1.</b> 두 자식 가지의 길이는 부모보다 30% 더 길다.</label><label class="choice"><input type="checkbox" name="q62" value="2" onchange="limit(62,this)"><b>2.</b> 이 코드의 핵심 결과는 ‘대표적인 재귀 프랙탈인 이진 나무입니다’라는 설명과 직접 연결된다.</label><label class="choice"><input type="checkbox" name="q62" value="3" onchange="limit(62,this)"><b>3.</b> 「재귀 나무」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.</label><label class="choice"><input type="checkbox" name="q62" value="4" onchange="limit(62,this)"><b>4.</b> 자식 가지 길이는 부모 가지의 70%이고, 두 갈래 재귀 호출 뒤 원래 분기점으로 되돌아온다.</label><label class="choice"><input type="checkbox" name="q62" value="5" onchange="limit(62,this)"><b>5.</b> 「재귀 나무」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.</label></div>
+  <div class="explain" id="e62"></div>
+</section>
+<section class="q" id="q63">
+  <span class="badge">063 / 100 · 거북이07</span>
+  <h3>063. 코흐 곡선</h3>
+  <div class="stem">다음 「코흐 곡선」 코드에서 도형의 수학적 성질의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+t.speed(0)
+
+def koch(length, depth):
+    if depth == 0:
+        t.forward(length)
+        return
+
+    koch(length / 3, depth - 1)
+    t.left(60)
+    koch(length / 3, depth - 1)
+    t.right(120)
+    koch(length / 3, depth - 1)
+    t.left(60)
+    koch(length / 3, depth - 1)
+
+koch(400, 4)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c63"><label class="choice"><input type="checkbox" name="q63" value="1" onchange="limit(63,this)"><b>1.</b> 「코흐 곡선」에서 한 단계 재귀 분해에서 길이를 1/3로 줄인 선분 호출이 네 번 등장한다.</label><label class="choice"><input type="checkbox" name="q63" value="2" onchange="limit(63,this)"><b>2.</b> 「코흐 곡선」에서 깊이가 1 증가할 때 선분 수는 절반으로 줄어든다.</label><label class="choice"><input type="checkbox" name="q63" value="3" onchange="limit(63,this)"><b>3.</b> 함수 정의를 사용해 ‘코흐 곡선’의 핵심 동작을 이름 있는 기능 단위로 분리했다.</label><label class="choice"><input type="checkbox" name="q63" value="4" onchange="limit(63,this)"><b>4.</b> 「코흐 곡선」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.</label><label class="choice"><input type="checkbox" name="q63" value="5" onchange="limit(63,this)"><b>5.</b> 「코흐 곡선」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.</label></div>
+  <div class="explain" id="e63"></div>
+</section>
+<section class="q" id="q64">
+  <span class="badge">064 / 100 · 거북이07</span>
+  <h3>064. 코흐 눈송이</h3>
+  <div class="stem">다음 「코흐 눈송이」 코드에서 변수 변화 추적의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+t.speed(0)
+
+def koch(length, depth):
+    if depth == 0:
+        t.forward(length)
+        return
+
+    for angle in [60, -120, 60, 0]:
+        koch(length / 3, depth - 1)
+        t.left(angle)
+
+for _ in range(3):
+    koch(300, 3)
+    t.right(120)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c64"><label class="choice"><input type="checkbox" name="q64" value="1" onchange="limit(64,this)"><b>1.</b> 「코흐 눈송이」에서 깊이가 1 증가할 때 선분 수는 절반으로 줄어든다.</label><label class="choice"><input type="checkbox" name="q64" value="2" onchange="limit(64,this)"><b>2.</b> 눈송이는 네 개의 코흐 곡선으로 이루어진 정사각형 구조이다.</label><label class="choice"><input type="checkbox" name="q64" value="3" onchange="limit(64,this)"><b>3.</b> 이 코드의 핵심 결과는 ‘코흐 곡선 세 개를 연결해 눈송이를 만듭니다’라는 설명과 직접 연결된다.</label><label class="choice"><input type="checkbox" name="q64" value="4" onchange="limit(64,this)"><b>4.</b> 「코흐 눈송이」에서 한 단계 재귀 분해에서 길이를 1/3로 줄인 선분 호출이 네 번 등장한다.</label><label class="choice"><input type="checkbox" name="q64" value="5" onchange="limit(64,this)"><b>5.</b> 동일한 코흐 곡선을 세 방향에 배치해 전체 눈송이의 세 변을 구성한다.</label></div>
+  <div class="explain" id="e64"></div>
+</section>
+<section class="q" id="q65">
+  <span class="badge">065 / 100 · 거북이07</span>
+  <h3>065. 시에르핀스키 삼각형</h3>
+  <div class="stem">다음 「시에르핀스키 삼각형」 코드에서 일반화 가능성의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+t.speed(0)
+
+def triangle(size):
+    for _ in range(3):
+        t.forward(size)
+        t.left(120)
+
+def sierpinski(size, depth):
+    if depth == 0:
+        triangle(size)
+        return
+
+    sierpinski(size / 2, depth - 1)
+
+    t.forward(size / 2)
+    sierpinski(size / 2, depth - 1)
+
+    t.backward(size / 2)
+
+    t.left(60)
+    t.forward(size / 2)
+    t.right(60)
+
+    sierpinski(size / 2, depth - 1)
+
+    t.left(60)
+    t.backward(size / 2)
+    t.right(60)
+
+sierpinski(300, 4)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c65"><label class="choice"><input type="checkbox" name="q65" value="1" onchange="limit(65,this)"><b>1.</b> 이 코드의 핵심 결과는 ‘삼각형을 세 개의 작은 삼각형으로 재귀 분할합니다’라는 설명과 직접 연결된다.</label><label class="choice"><input type="checkbox" name="q65" value="2" onchange="limit(65,this)"><b>2.</b> 깊이가 하나 증가할 때 각 단계는 절반 크기의 삼각형 세 개로 분기한다.</label><label class="choice"><input type="checkbox" name="q65" value="3" onchange="limit(65,this)"><b>3.</b> 재귀 단계마다 삼각형 한 개만 남기므로 분기 수는 항상 1이다.</label><label class="choice"><input type="checkbox" name="q65" value="4" onchange="limit(65,this)"><b>4.</b> 이 코드에서 ‘시에르핀스키 삼각형’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.</label><label class="choice"><input type="checkbox" name="q65" value="5" onchange="limit(65,this)"><b>5.</b> 「시에르핀스키 삼각형」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.</label></div>
+  <div class="explain" id="e65"></div>
+</section>
+<section class="q" id="q66">
+  <span class="badge">066 / 100 · 거북이07</span>
+  <h3>066. 재귀 원</h3>
+  <div class="stem">다음 「재귀 원」 코드에서 이벤트 흐름의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+t.speed(0)
+
+def circles(radius, depth):
+    if depth == 0:
+        return
+
+    t.circle(radius)
+    circles(radius * 0.8, depth - 1)
+
+circles(150, 12)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c66"><label class="choice"><input type="checkbox" name="q66" value="1" onchange="limit(66,this)"><b>1.</b> 재귀가 깊어질수록 반지름이 1.8배씩 커진다.</label><label class="choice"><input type="checkbox" name="q66" value="2" onchange="limit(66,this)"><b>2.</b> 이 코드의 핵심 결과는 ‘원의 크기를 점점 줄이며 재귀적으로 그립니다’라는 설명과 직접 연결된다.</label><label class="choice"><input type="checkbox" name="q66" value="3" onchange="limit(66,this)"><b>3.</b> 함수 정의를 사용해 ‘재귀 원’의 핵심 동작을 이름 있는 기능 단위로 분리했다.</label><label class="choice"><input type="checkbox" name="q66" value="4" onchange="limit(66,this)"><b>4.</b> 「재귀 원」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.</label><label class="choice"><input type="checkbox" name="q66" value="5" onchange="limit(66,this)"><b>5.</b> 「재귀 원」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.</label></div>
+  <div class="explain" id="e66"></div>
+</section>
+<section class="q" id="q67">
+  <span class="badge">067 / 100 · 거북이07</span>
+  <h3>067. 재귀 회전 다각형</h3>
+  <div class="stem">다음 「재귀 회전 다각형」 코드에서 재귀 종료 분석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+t.speed(0)
+
+def polygon(size, depth):
+    if depth == 0:
+        return
+
+    for _ in range(4):
+        t.forward(size)
+        t.left(90)
+
+    t.left(10)
+    polygon(size * 0.92, depth - 1)
+
+polygon(220, 25)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c67"><label class="choice"><input type="checkbox" name="q67" value="1" onchange="limit(67,this)"><b>1.</b> 각 단계에서 정사각형을 그린 뒤 10도 회전하고 크기를 92%로 축소한다.</label><label class="choice"><input type="checkbox" name="q67" value="2" onchange="limit(67,this)"><b>2.</b> 이 예제의 반복 구조는 ‘재귀 회전 다각형’에서 같은 동작을 여러 번 수행해야 하는 부분을 압축한다.</label><label class="choice"><input type="checkbox" name="q67" value="3" onchange="limit(67,this)"><b>3.</b> 「재귀 회전 다각형」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.</label><label class="choice"><input type="checkbox" name="q67" value="4" onchange="limit(67,this)"><b>4.</b> 크기를 매 단계 92픽셀씩 빼므로 곧 음수가 된다.</label><label class="choice"><input type="checkbox" name="q67" value="5" onchange="limit(67,this)"><b>5.</b> 이 코드에서 ‘재귀 회전 다각형’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.</label></div>
+  <div class="explain" id="e67"></div>
+</section>
+<section class="q" id="q68">
+  <span class="badge">068 / 100 · 거북이07</span>
+  <h3>068. 재귀 피보나치 길이 선</h3>
+  <div class="stem">다음 「재귀 피보나치 길이 선」 코드에서 백트래킹 분석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+
+def fib(n):
+    if n &lt;= 1:
+        return n
+    return fib(n - 1) + fib(n - 2)
+
+for i in range(2, 10):
+    t.forward(fib(i) * 3)
+    t.left(90)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c68"><label class="choice"><input type="checkbox" name="q68" value="1" onchange="limit(68,this)"><b>1.</b> fib는 항상 n 자체를 반환하므로 선 길이는 등차수열이다.</label><label class="choice"><input type="checkbox" name="q68" value="2" onchange="limit(68,this)"><b>2.</b> 이 코드의 핵심 결과는 ‘재귀 피보나치 값을 거북이 이동 길이에 활용합니다’라는 설명과 직접 연결된다.</label><label class="choice"><input type="checkbox" name="q68" value="3" onchange="limit(68,this)"><b>3.</b> fib는 두 이전 항을 재귀적으로 더하고, 그 결과를 거북이의 선분 길이에 사용한다.</label><label class="choice"><input type="checkbox" name="q68" value="4" onchange="limit(68,this)"><b>4.</b> 「재귀 피보나치 길이 선」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.</label><label class="choice"><input type="checkbox" name="q68" value="5" onchange="limit(68,this)"><b>5.</b> 이 예제의 반복 구조는 ‘재귀 피보나치 길이 선’에서 같은 동작을 여러 번 수행해야 하는 부분을 압축한다.</label></div>
+  <div class="explain" id="e68"></div>
+</section>
+<section class="q" id="q69">
+  <span class="badge">069 / 100 · 거북이07</span>
+  <h3>069. 스택 개념 시각화</h3>
+  <div class="stem">다음 「스택 개념 시각화」 코드에서 객체 상태 분석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+stack = [50, 80, 110, 140]
+
+t = turtle.Turtle()
+t.speed(0)
+
+while stack:
+    size = stack.pop()
+
+    for _ in range(4):
+        t.forward(size)
+        t.left(90)
+
+    t.left(10)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c69"><label class="choice"><input type="checkbox" name="q69" value="1" onchange="limit(69,this)"><b>1.</b> 이 코드의 핵심 결과는 ‘리스트의 `pop()`을 이용해 스택의 LIFO 구조를 그림으로 확인합니다’라는 설명과 직접 연결된다.</label><label class="choice"><input type="checkbox" name="q69" value="2" onchange="limit(69,this)"><b>2.</b> 처리 순서는 50→80→110→140으로 FIFO이다.</label><label class="choice"><input type="checkbox" name="q69" value="3" onchange="limit(69,this)"><b>3.</b> 「스택 개념 시각화」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.</label><label class="choice"><input type="checkbox" name="q69" value="4" onchange="limit(69,this)"><b>4.</b> 이 예제의 반복 구조는 ‘스택 개념 시각화’에서 같은 동작을 여러 번 수행해야 하는 부분을 압축한다.</label><label class="choice"><input type="checkbox" name="q69" value="5" onchange="limit(69,this)"><b>5.</b> 「스택 개념 시각화」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.</label></div>
+  <div class="explain" id="e69"></div>
+</section>
+<section class="q" id="q70">
+  <span class="badge">070 / 100 · 거북이07</span>
+  <h3>070. 큐 개념 시각화</h3>
+  <div class="stem">다음 「큐 개념 시각화」 코드에서 자료구조 처리순서의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+from collections import deque
+
+q = deque([50, 80, 110, 140])
+
+t = turtle.Turtle()
+t.speed(0)
+
+while q:
+    size = q.popleft()
+
+    for _ in range(4):
+        t.forward(size)
+        t.left(90)
+
+    t.left(10)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c70"><label class="choice"><input type="checkbox" name="q70" value="1" onchange="limit(70,this)"><b>1.</b> 이 코드의 핵심 결과는 ‘deque의 `popleft()`를 이용해 FIFO 순서를 시각화합니다’라는 설명과 직접 연결된다.</label><label class="choice"><input type="checkbox" name="q70" value="2" onchange="limit(70,this)"><b>2.</b> 이 예제의 반복 구조는 ‘큐 개념 시각화’에서 같은 동작을 여러 번 수행해야 하는 부분을 압축한다.</label><label class="choice"><input type="checkbox" name="q70" value="3" onchange="limit(70,this)"><b>3.</b> 140이 가장 먼저 처리되는 LIFO 구조이다.</label><label class="choice"><input type="checkbox" name="q70" value="4" onchange="limit(70,this)"><b>4.</b> 「큐 개념 시각화」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.</label><label class="choice"><input type="checkbox" name="q70" value="5" onchange="limit(70,this)"><b>5.</b> 이 코드에서 ‘큐 개념 시각화’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.</label></div>
+  <div class="explain" id="e70"></div>
+</section>
+<div class="actions"><button onclick="findMissing()">미완료 확인</button><button class="primary" onclick="grade()">채점하기</button><button id="save" class="hidden" onclick="saveTxt()">TXT 저장</button></div>
+<section id="result" class="result hidden"></section>
+</main><script>
+const Q=[{"id": 61, "title": "재귀 나선", "desc": "길이를 증가시키며 재귀적으로 나선을 그립니다.", "code": "import turtle\n\nt = turtle.Turtle()\n\ndef spiral(length):\n    if length > 200:\n        return\n\n    t.forward(length)\n    t.left(90)\n\n    spiral(length + 5)\n\nspiral(10)\n\nturtle.done()", "stem": "다음 「재귀 나선」 코드에서 오류 원인 판별의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "재귀가 진행될수록 length가 5씩 커지고 200을 초과하면 더 이상 그리지 않는다.", "correct": 1, "explanation": "종료 조건과 재귀 인수 증가가 맞물립니다."}, {"text": "이 코드에서 ‘재귀 나선’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.", "correct": 0, "explanation": "실제 그림은 그 이전의 이동·회전·좌표 계산 명령들이 만들며 done()은 이벤트 루프를 유지합니다."}, {"text": "함수 정의를 사용해 ‘재귀 나선’의 핵심 동작을 이름 있는 기능 단위로 분리했다.", "correct": 1, "explanation": "def로 반복되거나 의미 있는 동작을 함수로 묶었습니다."}, {"text": "「재귀 나선」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.", "correct": 1, "explanation": "Turtle/Tk 이벤트 루프를 시작하는 역할입니다."}, {"text": "「재귀 나선」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.", "correct": 0, "explanation": "거리·각도·좌표 계산에는 수치 자료형이 필요합니다."}], "correct_positions": [1, 3, 4]}, {"id": 62, "title": "재귀 나무", "desc": "대표적인 재귀 프랙탈인 이진 나무입니다.", "code": "import turtle\n\nt = turtle.Turtle()\nt.left(90)\nt.speed(0)\n\ndef tree(length, depth):\n    if depth == 0:\n        return\n\n    t.forward(length)\n    t.left(30)\n\n    tree(length * 0.7, depth - 1)\n\n    t.right(60)\n\n    tree(length * 0.7, depth - 1)\n\n    t.left(30)\n    t.backward(length)\n\ntree(100, 6)\n\nturtle.done()", "stem": "다음 「재귀 나무」 코드에서 출력 위치 구분의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "두 자식 가지의 길이는 부모보다 30% 더 길다.", "correct": 0, "explanation": "0.7배이므로 더 짧습니다."}, {"text": "이 코드의 핵심 결과는 ‘대표적인 재귀 프랙탈인 이진 나무입니다’라는 설명과 직접 연결된다.", "correct": 1, "explanation": "코드의 주요 연산과 Turtle 명령은 실제로 대표적인 재귀 프랙탈인 이진 나무입니다를 구현합니다."}, {"text": "「재귀 나무」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.", "correct": 0, "explanation": "거리·각도·좌표 계산에는 수치 자료형이 필요합니다."}, {"text": "자식 가지 길이는 부모 가지의 70%이고, 두 갈래 재귀 호출 뒤 원래 분기점으로 되돌아온다.", "correct": 1, "explanation": "length*0.7과 backward(length)가 사용됩니다."}, {"text": "「재귀 나무」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.", "correct": 1, "explanation": "Turtle/Tk 이벤트 루프를 시작하는 역할입니다."}], "correct_positions": [2, 4, 5]}, {"id": 63, "title": "코흐 곡선", "desc": "한 선분을 네 부분으로 재귀 분할하는 코흐 곡선입니다.", "code": "import turtle\n\nt = turtle.Turtle()\nt.speed(0)\n\ndef koch(length, depth):\n    if depth == 0:\n        t.forward(length)\n        return\n\n    koch(length / 3, depth - 1)\n    t.left(60)\n    koch(length / 3, depth - 1)\n    t.right(120)\n    koch(length / 3, depth - 1)\n    t.left(60)\n    koch(length / 3, depth - 1)\n\nkoch(400, 4)\n\nturtle.done()", "stem": "다음 「코흐 곡선」 코드에서 도형의 수학적 성질의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "「코흐 곡선」에서 한 단계 재귀 분해에서 길이를 1/3로 줄인 선분 호출이 네 번 등장한다.", "correct": 1, "explanation": "코흐 생성 규칙이 4개의 작은 선분으로 구성됩니다."}, {"text": "「코흐 곡선」에서 깊이가 1 증가할 때 선분 수는 절반으로 줄어든다.", "correct": 0, "explanation": "선분 수는 4배씩 늘어납니다."}, {"text": "함수 정의를 사용해 ‘코흐 곡선’의 핵심 동작을 이름 있는 기능 단위로 분리했다.", "correct": 1, "explanation": "def로 반복되거나 의미 있는 동작을 함수로 묶었습니다."}, {"text": "「코흐 곡선」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.", "correct": 0, "explanation": "거리·각도·좌표 계산에는 수치 자료형이 필요합니다."}, {"text": "「코흐 곡선」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.", "correct": 1, "explanation": "Turtle/Tk 이벤트 루프를 시작하는 역할입니다."}], "correct_positions": [1, 3, 5]}, {"id": 64, "title": "코흐 눈송이", "desc": "코흐 곡선 세 개를 연결해 눈송이를 만듭니다.", "code": "import turtle\n\nt = turtle.Turtle()\nt.speed(0)\n\ndef koch(length, depth):\n    if depth == 0:\n        t.forward(length)\n        return\n\n    for angle in [60, -120, 60, 0]:\n        koch(length / 3, depth - 1)\n        t.left(angle)\n\nfor _ in range(3):\n    koch(300, 3)\n    t.right(120)\n\nturtle.done()", "stem": "다음 「코흐 눈송이」 코드에서 변수 변화 추적의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "「코흐 눈송이」에서 깊이가 1 증가할 때 선분 수는 절반으로 줄어든다.", "correct": 0, "explanation": "선분 수는 4배씩 늘어납니다."}, {"text": "눈송이는 네 개의 코흐 곡선으로 이루어진 정사각형 구조이다.", "correct": 0, "explanation": "세 곡선으로 삼각형 경계를 만듭니다."}, {"text": "이 코드의 핵심 결과는 ‘코흐 곡선 세 개를 연결해 눈송이를 만듭니다’라는 설명과 직접 연결된다.", "correct": 1, "explanation": "코드의 주요 연산과 Turtle 명령은 실제로 코흐 곡선 세 개를 연결해 눈송이를 만듭니다를 구현합니다."}, {"text": "「코흐 눈송이」에서 한 단계 재귀 분해에서 길이를 1/3로 줄인 선분 호출이 네 번 등장한다.", "correct": 1, "explanation": "코흐 생성 규칙이 4개의 작은 선분으로 구성됩니다."}, {"text": "동일한 코흐 곡선을 세 방향에 배치해 전체 눈송이의 세 변을 구성한다.", "correct": 1, "explanation": "외부 반복이 세 변을 처리합니다."}], "correct_positions": [3, 4, 5]}, {"id": 65, "title": "시에르핀스키 삼각형", "desc": "삼각형을 세 개의 작은 삼각형으로 재귀 분할합니다.", "code": "import turtle\n\nt = turtle.Turtle()\nt.speed(0)\n\ndef triangle(size):\n    for _ in range(3):\n        t.forward(size)\n        t.left(120)\n\ndef sierpinski(size, depth):\n    if depth == 0:\n        triangle(size)\n        return\n\n    sierpinski(size / 2, depth - 1)\n\n    t.forward(size / 2)\n    sierpinski(size / 2, depth - 1)\n\n    t.backward(size / 2)\n\n    t.left(60)\n    t.forward(size / 2)\n    t.right(60)\n\n    sierpinski(size / 2, depth - 1)\n\n    t.left(60)\n    t.backward(size / 2)\n    t.right(60)\n\nsierpinski(300, 4)\n\nturtle.done()", "stem": "다음 「시에르핀스키 삼각형」 코드에서 일반화 가능성의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "이 코드의 핵심 결과는 ‘삼각형을 세 개의 작은 삼각형으로 재귀 분할합니다’라는 설명과 직접 연결된다.", "correct": 1, "explanation": "코드의 주요 연산과 Turtle 명령은 실제로 삼각형을 세 개의 작은 삼각형으로 재귀 분할합니다를 구현합니다."}, {"text": "깊이가 하나 증가할 때 각 단계는 절반 크기의 삼각형 세 개로 분기한다.", "correct": 1, "explanation": "세 번의 재귀 호출이 size/2로 이루어집니다."}, {"text": "재귀 단계마다 삼각형 한 개만 남기므로 분기 수는 항상 1이다.", "correct": 0, "explanation": "세 개의 재귀 분기가 있습니다."}, {"text": "이 코드에서 ‘시에르핀스키 삼각형’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.", "correct": 0, "explanation": "실제 그림은 그 이전의 이동·회전·좌표 계산 명령들이 만들며 done()은 이벤트 루프를 유지합니다."}, {"text": "「시에르핀스키 삼각형」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.", "correct": 1, "explanation": "Turtle/Tk 이벤트 루프를 시작하는 역할입니다."}], "correct_positions": [1, 2, 5]}, {"id": 66, "title": "재귀 원", "desc": "원의 크기를 점점 줄이며 재귀적으로 그립니다.", "code": "import turtle\n\nt = turtle.Turtle()\nt.speed(0)\n\ndef circles(radius, depth):\n    if depth == 0:\n        return\n\n    t.circle(radius)\n    circles(radius * 0.8, depth - 1)\n\ncircles(150, 12)\n\nturtle.done()", "stem": "다음 「재귀 원」 코드에서 이벤트 흐름의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "재귀가 깊어질수록 반지름이 1.8배씩 커진다.", "correct": 0, "explanation": "0.8배로 감소합니다."}, {"text": "이 코드의 핵심 결과는 ‘원의 크기를 점점 줄이며 재귀적으로 그립니다’라는 설명과 직접 연결된다.", "correct": 1, "explanation": "코드의 주요 연산과 Turtle 명령은 실제로 원의 크기를 점점 줄이며 재귀적으로 그립니다를 구현합니다."}, {"text": "함수 정의를 사용해 ‘재귀 원’의 핵심 동작을 이름 있는 기능 단위로 분리했다.", "correct": 1, "explanation": "def로 반복되거나 의미 있는 동작을 함수로 묶었습니다."}, {"text": "「재귀 원」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.", "correct": 1, "explanation": "Turtle/Tk 이벤트 루프를 시작하는 역할입니다."}, {"text": "「재귀 원」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.", "correct": 0, "explanation": "거리·각도·좌표 계산에는 수치 자료형이 필요합니다."}], "correct_positions": [2, 3, 4]}, {"id": 67, "title": "재귀 회전 다각형", "desc": "축소와 회전을 재귀적으로 반복해 소용돌이 형태를 만듭니다.", "code": "import turtle\n\nt = turtle.Turtle()\nt.speed(0)\n\ndef polygon(size, depth):\n    if depth == 0:\n        return\n\n    for _ in range(4):\n        t.forward(size)\n        t.left(90)\n\n    t.left(10)\n    polygon(size * 0.92, depth - 1)\n\npolygon(220, 25)\n\nturtle.done()", "stem": "다음 「재귀 회전 다각형」 코드에서 재귀 종료 분석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "각 단계에서 정사각형을 그린 뒤 10도 회전하고 크기를 92%로 축소한다.", "correct": 1, "explanation": "left(10), size*0.92가 적용됩니다."}, {"text": "이 예제의 반복 구조는 ‘재귀 회전 다각형’에서 같은 동작을 여러 번 수행해야 하는 부분을 압축한다.", "correct": 1, "explanation": "반복문은 같은 명령 묶음을 일정 횟수 또는 자료 개수만큼 실행합니다."}, {"text": "「재귀 회전 다각형」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.", "correct": 1, "explanation": "Turtle/Tk 이벤트 루프를 시작하는 역할입니다."}, {"text": "크기를 매 단계 92픽셀씩 빼므로 곧 음수가 된다.", "correct": 0, "explanation": "0.92를 곱하는 비율 축소입니다."}, {"text": "이 코드에서 ‘재귀 회전 다각형’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.", "correct": 0, "explanation": "실제 그림은 그 이전의 이동·회전·좌표 계산 명령들이 만들며 done()은 이벤트 루프를 유지합니다."}], "correct_positions": [1, 2, 3]}, {"id": 68, "title": "재귀 피보나치 길이 선", "desc": "재귀 피보나치 값을 거북이 이동 길이에 활용합니다.", "code": "import turtle\n\nt = turtle.Turtle()\n\ndef fib(n):\n    if n <= 1:\n        return n\n    return fib(n - 1) + fib(n - 2)\n\nfor i in range(2, 10):\n    t.forward(fib(i) * 3)\n    t.left(90)\n\nturtle.done()", "stem": "다음 「재귀 피보나치 길이 선」 코드에서 백트래킹 분석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "fib는 항상 n 자체를 반환하므로 선 길이는 등차수열이다.", "correct": 0, "explanation": "n>1에서는 두 재귀 결과의 합입니다."}, {"text": "이 코드의 핵심 결과는 ‘재귀 피보나치 값을 거북이 이동 길이에 활용합니다’라는 설명과 직접 연결된다.", "correct": 1, "explanation": "코드의 주요 연산과 Turtle 명령은 실제로 재귀 피보나치 값을 거북이 이동 길이에 활용합니다를 구현합니다."}, {"text": "fib는 두 이전 항을 재귀적으로 더하고, 그 결과를 거북이의 선분 길이에 사용한다.", "correct": 1, "explanation": "피보나치 반환값에 3을 곱해 forward에 사용합니다."}, {"text": "「재귀 피보나치 길이 선」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.", "correct": 0, "explanation": "거리·각도·좌표 계산에는 수치 자료형이 필요합니다."}, {"text": "이 예제의 반복 구조는 ‘재귀 피보나치 길이 선’에서 같은 동작을 여러 번 수행해야 하는 부분을 압축한다.", "correct": 1, "explanation": "반복문은 같은 명령 묶음을 일정 횟수 또는 자료 개수만큼 실행합니다."}], "correct_positions": [2, 3, 5]}, {"id": 69, "title": "스택 개념 시각화", "desc": "리스트의 `pop()`을 이용해 스택의 LIFO 구조를 그림으로 확인합니다.", "code": "import turtle\n\nstack = [50, 80, 110, 140]\n\nt = turtle.Turtle()\nt.speed(0)\n\nwhile stack:\n    size = stack.pop()\n\n    for _ in range(4):\n        t.forward(size)\n        t.left(90)\n\n    t.left(10)\n\nturtle.done()", "stem": "다음 「스택 개념 시각화」 코드에서 객체 상태 분석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "이 코드의 핵심 결과는 ‘리스트의 `pop()`을 이용해 스택의 LIFO 구조를 그림으로 확인합니다’라는 설명과 직접 연결된다.", "correct": 1, "explanation": "코드의 주요 연산과 Turtle 명령은 실제로 리스트의 `pop()`을 이용해 스택의 LIFO 구조를 그림으로 확인합니다를 구현합니다."}, {"text": "처리 순서는 50→80→110→140으로 FIFO이다.", "correct": 0, "explanation": "스택이므로 역순입니다."}, {"text": "「스택 개념 시각화」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.", "correct": 0, "explanation": "거리·각도·좌표 계산에는 수치 자료형이 필요합니다."}, {"text": "이 예제의 반복 구조는 ‘스택 개념 시각화’에서 같은 동작을 여러 번 수행해야 하는 부분을 압축한다.", "correct": 1, "explanation": "반복문은 같은 명령 묶음을 일정 횟수 또는 자료 개수만큼 실행합니다."}, {"text": "「스택 개념 시각화」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.", "correct": 1, "explanation": "Turtle/Tk 이벤트 루프를 시작하는 역할입니다."}], "correct_positions": [1, 4, 5]}, {"id": 70, "title": "큐 개념 시각화", "desc": "deque의 `popleft()`를 이용해 FIFO 순서를 시각화합니다.", "code": "import turtle\nfrom collections import deque\n\nq = deque([50, 80, 110, 140])\n\nt = turtle.Turtle()\nt.speed(0)\n\nwhile q:\n    size = q.popleft()\n\n    for _ in range(4):\n        t.forward(size)\n        t.left(90)\n\n    t.left(10)\n\nturtle.done()", "stem": "다음 「큐 개념 시각화」 코드에서 자료구조 처리순서의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "이 코드의 핵심 결과는 ‘deque의 `popleft()`를 이용해 FIFO 순서를 시각화합니다’라는 설명과 직접 연결된다.", "correct": 1, "explanation": "코드의 주요 연산과 Turtle 명령은 실제로 deque의 `popleft()`를 이용해 FIFO 순서를 시각화합니다를 구현합니다."}, {"text": "이 예제의 반복 구조는 ‘큐 개념 시각화’에서 같은 동작을 여러 번 수행해야 하는 부분을 압축한다.", "correct": 1, "explanation": "반복문은 같은 명령 묶음을 일정 횟수 또는 자료 개수만큼 실행합니다."}, {"text": "140이 가장 먼저 처리되는 LIFO 구조이다.", "correct": 0, "explanation": "deque popleft는 FIFO입니다."}, {"text": "「큐 개념 시각화」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.", "correct": 1, "explanation": "Turtle/Tk 이벤트 루프를 시작하는 역할입니다."}, {"text": "이 코드에서 ‘큐 개념 시각화’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.", "correct": 0, "explanation": "실제 그림은 그 이전의 이동·회전·좌표 계산 명령들이 만들며 done()은 이벤트 루프를 유지합니다."}], "correct_positions": [1, 2, 4]}];
+const SETNAME="거북이07";
+let RESULT=null;
+const esc=s=>s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+function selected(id){return [...document.querySelectorAll(`input[name=q${id}]:checked`)].map(x=>+x.value)}
+function jumpQ(n){if(n)document.getElementById('q'+n).scrollIntoView({behavior:'smooth',block:'start'})}
+function limit(id,x){if(selected(id).length>3){x.checked=false;alert('한 문항에서는 3개까지만 선택할 수 있습니다.')}progress()}
+function progress(){document.getElementById('prog').textContent=`완료 ${Q.filter(q=>selected(q.id).length===3).length} / 10`}
+function findMissing(){
+ const m=Q.filter(q=>selected(q.id).length!==3);
+ if(!m.length){alert('10문항 모두 3개 선택을 완료했습니다.');return}
+ alert('미완료 문항: '+m.map(x=>String(x.id).padStart(3,'0')).join(', '));jumpQ(m[0].id);
+}
+function grade(){
+ const no=document.getElementById('no').value.trim(), name=document.getElementById('name').value.trim();
+ if(!no||!name){alert('학번과 이름을 입력해 주세요.');return}
+ const m=Q.filter(q=>selected(q.id).length!==3);
+ if(m.length){alert('아직 3개를 선택하지 않은 문항이 있습니다.');jumpQ(m[0].id);return}
+ let score=0, detail=[];
+ Q.forEach(q=>{
+   const u=selected(q.id).sort((a,b)=>a-b), a=q.correct_positions.slice().sort((a,b)=>a-b);
+   const ok=JSON.stringify(u)===JSON.stringify(a); if(ok)score++;
+   const labels=document.querySelectorAll(`#c${q.id} .choice`);
+   q.options.forEach((o,k)=>{
+     labels[k].classList.remove('answer','badpick');
+     if(o.correct)labels[k].classList.add('answer'); else if(u.includes(k+1))labels[k].classList.add('badpick');
+   });
+   const e=document.getElementById('e'+q.id);
+   e.innerHTML=`<div class="${ok?'good':'bad'}">${ok?'정답':'오답'} · 선택 ${u.join(', ')} · 정답 ${a.join(', ')}</div>
+   <p><b>문제 풀이</b> — 이 문제는 「${esc(q.title)}」 코드 자체의 실행 흐름을 근거로 판단합니다.</p>
+   <ol>${q.options.map((o,k)=>`<li><b>${k+1}번 ${o.correct?'[옳음]':'[틀림]'}</b> — ${esc(o.explanation)}</li>`).join('')}</ol>`;
+   e.classList.add('show');
+   detail.push({id:q.id,title:q.title,stem:q.stem,u,a,ok,options:q.options});
+ });
+ RESULT={no,name,score,detail,time:new Date()};
+ const r=document.getElementById('result');
+ r.classList.remove('hidden');
+ r.innerHTML=`<h2>채점 결과</h2><p><b>${esc(no)} ${esc(name)}</b> · <b>${score}점 / 10점</b></p><p>정답 ${score}문항, 오답 ${10-score}문항입니다.</p>`;
+ document.getElementById('save').classList.remove('hidden');
+ r.scrollIntoView({behavior:'smooth'});
+}
+const pad=n=>String(n).padStart(2,'0');
+const ts=d=>`${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}`;
+const ht=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+const safe=s=>s.replace(/[\\/:*?"<>|]/g,'_').replace(/\s+/g,'_');
+function saveTxt(){
+ if(!RESULT)return;
+ const r=RESULT,L=[];
+ L.push(`IDLE Python Turtle ${SETNAME} 평가 결과`,'='.repeat(64),`학번: ${r.no}`,`이름: ${r.name}`,`점수: ${r.score} / 10`,`응시시각: ${ht(r.time)}`,`범위: 061번 ~ 070번`,'형식: 코드별 옳은 것 3개 고르기 5지선다형','='.repeat(64),'');
+ r.detail.forEach(d=>{
+   L.push(`[${String(d.id).padStart(3,'0')}번] ${d.title}`,`문제: ${d.stem}`,`판정: ${d.ok?'정답':'오답'}`,`내 선택: ${d.u.join(', ')}`,`정답: ${d.a.join(', ')}`,'보기별 풀이:');
+   d.options.forEach((o,k)=>L.push(`  ${k+1}. ${o.correct?'[옳음]':'[틀림]'} ${o.text}`,`     해설: ${o.explanation}`));
+   L.push('-'.repeat(64));
+ });
+ const blob=new Blob([L.join('\n')],{type:'text/plain;charset=utf-8'});
+ const a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);
+ a.download=`${safe(r.no)}_${safe(r.name)}_${r.score}_${SETNAME}_${ts(r.time)}.txt`;
+ document.body.appendChild(a);a.click();URL.revokeObjectURL(a.href);a.remove();
+}
+progress();
+</script></body></html>

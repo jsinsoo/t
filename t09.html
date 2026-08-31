@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>거북이09 - 081~090번</title><style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#667085;--line:#d8e0ea;--blue:#2458d3;--good:#167448;--bad:#c63c32;--code:#101827;--soft:#eef4ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:"Malgun Gothic","Noto Sans KR",sans-serif;line-height:1.68}
+header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);padding:10px 14px}
+.bar{max-width:1280px;margin:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}h1{font-size:19px;margin:0 10px 0 0}
+input,select,button{font:inherit;border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:white}button{cursor:pointer}.primary{background:var(--blue);color:white;border-color:var(--blue);font-weight:700}
+main{max-width:1280px;margin:20px auto;padding:0 16px 80px}.intro,.q,.result{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:18px;box-shadow:0 4px 14px rgba(15,23,42,.04)}
+.intro h2{margin-top:0}.badge{display:inline-block;background:var(--soft);color:var(--blue);font-size:12px;font-weight:800;padding:4px 9px;border-radius:999px}.q h3{margin:7px 0}
+.stem{font-weight:700;margin:10px 0 12px}.code{background:var(--code);color:#e8edf5;padding:15px;border-radius:12px;overflow:auto;white-space:pre;font-size:13px;line-height:1.55}
+.choices{display:grid;gap:9px;margin-top:14px}.choice{border:1px solid var(--line);border-radius:10px;padding:11px 12px;background:#fbfcfe}.choice input{margin-right:8px}
+.choice.answer{background:#eefaf3;border-color:#8bc8a7}.choice.badpick{background:#fff1ef;border-color:#e1a29c}.explain{display:none;border-top:1px dashed var(--line);margin-top:14px;padding-top:12px}.explain.show{display:block}
+.good{color:var(--good);font-weight:800}.bad{color:var(--bad);font-weight:800}.muted{color:var(--muted);font-size:13px}.progress{font-weight:800;color:var(--blue)}
+.actions{position:sticky;bottom:10px;z-index:25;background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 25px rgba(15,23,42,.13);padding:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.hidden{display:none}
+@media(max-width:720px){.q{padding:14px}.code{font-size:11.5px}h1{font-size:16px}}@media print{header,.actions{display:none}.q{break-inside:avoid;box-shadow:none}body{background:#fff}}
+</style></head>
+<body>
+<header><div class="bar"><h1>거북이09 · 081~090번</h1>
+<input id="no" placeholder="학번"><input id="name" placeholder="이름">
+<select onchange="jumpQ(this.value)"><option value="">문항 이동</option><option value="81">081번</option><option value="82">082번</option><option value="83">083번</option><option value="84">084번</option><option value="85">085번</option><option value="86">086번</option><option value="87">087번</option><option value="88">088번</option><option value="89">089번</option><option value="90">090번</option></select>
+<span id="prog" class="progress">완료 0 / 10</span></div></header>
+<main>
+<section class="intro"><h2>거북이09 코드 분석 평가</h2>
+<p>원본 100문항 중 번호순 081~090번을 수록했습니다. 각 문항은 5개 보기 중 옳은 설명 3개를 정확히 선택해야 1점입니다.</p>
+<p>채점 후 각 보기의 정오답과 상세 해설을 확인할 수 있으며, 결과는 <b>학번_이름_점수_거북이09_응시시각.txt</b> 형식으로 저장됩니다.</p></section>
+
+<section class="q" id="q81">
+  <span class="badge">081 / 100 · 거북이09</span>
+  <h3>081. 테오도로스 와선</h3>
+  <div class="stem">다음 「테오도로스 와선」 코드에서 좌표 해석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+import math
+
+t = turtle.Turtle()
+t.speed(0)
+
+scale = 50
+x, y = 1, 0
+
+t.penup()
+t.goto(0, 0)
+t.pendown()
+t.goto(x * scale, y * scale)
+
+for n in range(1, 17):
+    R = math.sqrt(x*x + y*y)
+
+    new_x = x - y / R
+    new_y = y + x / R
+
+    t.goto(new_x * scale, new_y * scale)
+
+    x, y = new_x, new_y
+
+turtle.done()</code></pre>
+  <div class="choices" id="c81"><label class="choice"><input type="checkbox" name="q81" value="1" onchange="limit(81,this)"><b>1.</b> 이 코드의 핵심 결과는 ‘연속된 직각삼각형으로 만들어지는 테오도로스 와선을 그립니다’라는 설명과 직접 연결된다.</label><label class="choice"><input type="checkbox" name="q81" value="2" onchange="limit(81,this)"><b>2.</b> 이 코드에서 ‘테오도로스 와선’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.</label><label class="choice"><input type="checkbox" name="q81" value="3" onchange="limit(81,this)"><b>3.</b> 새 점 계산에서 이전 반지름 방향에 수직인 단위 성분을 더해 연속된 직각삼각형 구조를 만든다.</label><label class="choice"><input type="checkbox" name="q81" value="4" onchange="limit(81,this)"><b>4.</b> 「테오도로스 와선」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.</label><label class="choice"><input type="checkbox" name="q81" value="5" onchange="limit(81,this)"><b>5.</b> 「테오도로스 와선」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.</label></div>
+  <div class="explain" id="e81"></div>
+</section>
+<section class="q" id="q82">
+  <span class="badge">082 / 100 · 거북이09</span>
+  <h3>082. 극좌표 별 나선</h3>
+  <div class="stem">다음 「극좌표 별 나선」 코드에서 방향각 해석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+import math
+
+t = turtle.Turtle()
+t.speed(0)
+t.penup()
+
+for i in range(1200):
+    theta = math.radians(i)
+    r = 0.12 * i * (1 + 0.3 * math.sin(5 * theta))
+
+    x = r * math.cos(theta)
+    y = r * math.sin(theta)
+
+    t.goto(x, y)
+    t.pendown()
+
+turtle.done()</code></pre>
+  <div class="choices" id="c82"><label class="choice"><input type="checkbox" name="q82" value="1" onchange="limit(82,this)"><b>1.</b> 이 코드에서 ‘극좌표 별 나선’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.</label><label class="choice"><input type="checkbox" name="q82" value="2" onchange="limit(82,this)"><b>2.</b> 이 코드의 핵심 결과는 ‘극좌표 반지름에 주기 변화를 넣어 별 모양 나선을 만듭니다’라는 설명과 직접 연결된다.</label><label class="choice"><input type="checkbox" name="q82" value="3" onchange="limit(82,this)"><b>3.</b> 「극좌표 별 나선」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.</label><label class="choice"><input type="checkbox" name="q82" value="4" onchange="limit(82,this)"><b>4.</b> 이 예제의 반복 구조는 ‘극좌표 별 나선’에서 같은 동작을 여러 번 수행해야 하는 부분을 압축한다.</label><label class="choice"><input type="checkbox" name="q82" value="5" onchange="limit(82,this)"><b>5.</b> 「극좌표 별 나선」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.</label></div>
+  <div class="explain" id="e82"></div>
+</section>
+<section class="q" id="q83">
+  <span class="badge">083 / 100 · 거북이09</span>
+  <h3>083. 리사주 곡선</h3>
+  <div class="stem">다음 「리사주 곡선」 코드에서 반복횟수 분석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+import math
+
+t = turtle.Turtle()
+t.speed(0)
+t.penup()
+
+for i in range(2000):
+    theta = math.radians(i)
+
+    x = 200 * math.sin(3 * theta)
+    y = 150 * math.sin(4 * theta)
+
+    t.goto(x, y)
+    t.pendown()
+
+turtle.done()</code></pre>
+  <div class="choices" id="c83"><label class="choice"><input type="checkbox" name="q83" value="1" onchange="limit(83,this)"><b>1.</b> 이 코드의 핵심 결과는 ‘서로 다른 진동수의 사인 함수를 x, y 좌표에 사용합니다’라는 설명과 직접 연결된다.</label><label class="choice"><input type="checkbox" name="q83" value="2" onchange="limit(83,this)"><b>2.</b> x와 y의 진동수가 같아 모든 점이 한 직선에만 놓인다.</label><label class="choice"><input type="checkbox" name="q83" value="3" onchange="limit(83,this)"><b>3.</b> x와 y 진동수의 비가 3:4이므로 서로 다른 주기의 진동이 결합된 리사주 도형이 나타난다.</label><label class="choice"><input type="checkbox" name="q83" value="4" onchange="limit(83,this)"><b>4.</b> 「리사주 곡선」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.</label><label class="choice"><input type="checkbox" name="q83" value="5" onchange="limit(83,this)"><b>5.</b> 「리사주 곡선」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.</label></div>
+  <div class="explain" id="e83"></div>
+</section>
+<section class="q" id="q84">
+  <span class="badge">084 / 100 · 거북이09</span>
+  <h3>084. 하트 곡선</h3>
+  <div class="stem">다음 「하트 곡선」 코드에서 함수 호출 분석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+import math
+
+t = turtle.Turtle()
+t.speed(0)
+t.penup()
+
+for i in range(361):
+    a = math.radians(i)
+
+    x = 16 * math.sin(a) ** 3
+    y = (
+        13 * math.cos(a)
+        - 5 * math.cos(2*a)
+        - 2 * math.cos(3*a)
+        - math.cos(4*a)
+    )
+
+    t.goto(x * 10, y * 10)
+    t.pendown()
+
+turtle.done()</code></pre>
+  <div class="choices" id="c84"><label class="choice"><input type="checkbox" name="q84" value="1" onchange="limit(84,this)"><b>1.</b> 이 코드에서 ‘하트 곡선’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.</label><label class="choice"><input type="checkbox" name="q84" value="2" onchange="limit(84,this)"><b>2.</b> 「하트 곡선」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.</label><label class="choice"><input type="checkbox" name="q84" value="3" onchange="limit(84,this)"><b>3.</b> x는 sin³ 항, y는 여러 cos 배각 항의 합으로 계산되어 하트형 대칭 곡선을 만든다.</label><label class="choice"><input type="checkbox" name="q84" value="4" onchange="limit(84,this)"><b>4.</b> 이 예제의 반복 구조는 ‘하트 곡선’에서 같은 동작을 여러 번 수행해야 하는 부분을 압축한다.</label><label class="choice"><input type="checkbox" name="q84" value="5" onchange="limit(84,this)"><b>5.</b> 「하트 곡선」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.</label></div>
+  <div class="explain" id="e84"></div>
+</section>
+<section class="q" id="q85">
+  <span class="badge">085 / 100 · 거북이09</span>
+  <h3>085. 카디오이드</h3>
+  <div class="stem">다음 「카디오이드」 코드에서 자료 흐름 분석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+import math
+
+t = turtle.Turtle()
+t.speed(0)
+t.penup()
+
+for i in range(721):
+    theta = math.radians(i)
+    r = 150 * (1 - math.cos(theta))
+
+    x = r * math.cos(theta)
+    y = r * math.sin(theta)
+
+    t.goto(x, y)
+    t.pendown()
+
+turtle.done()</code></pre>
+  <div class="choices" id="c85"><label class="choice"><input type="checkbox" name="q85" value="1" onchange="limit(85,this)"><b>1.</b> 이 코드의 핵심 결과는 ‘극좌표 카디오이드 곡선을 그립니다’라는 설명과 직접 연결된다.</label><label class="choice"><input type="checkbox" name="q85" value="2" onchange="limit(85,this)"><b>2.</b> θ=0일 때 r=0이므로 카디오이드가 원점을 지나는 뾰족점을 갖는다.</label><label class="choice"><input type="checkbox" name="q85" value="3" onchange="limit(85,this)"><b>3.</b> θ=0일 때 r=300이므로 원점에서 가장 멀리 시작한다.</label><label class="choice"><input type="checkbox" name="q85" value="4" onchange="limit(85,this)"><b>4.</b> 이 코드에서 ‘카디오이드’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.</label><label class="choice"><input type="checkbox" name="q85" value="5" onchange="limit(85,this)"><b>5.</b> 「카디오이드」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.</label></div>
+  <div class="explain" id="e85"></div>
+</section>
+<section class="q" id="q86">
+  <span class="badge">086 / 100 · 거북이09</span>
+  <h3>086. 스피로그래프</h3>
+  <div class="stem">다음 「스피로그래프」 코드에서 오류 원인 판별의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+t.speed(0)
+
+for _ in range(72):
+    t.circle(100)
+    t.left(5)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c86"><label class="choice"><input type="checkbox" name="q86" value="1" onchange="limit(86,this)"><b>1.</b> 「스피로그래프」에서 인수가 하나뿐이므로 100도짜리 원호만 그린다.</label><label class="choice"><input type="checkbox" name="q86" value="2" onchange="limit(86,this)"><b>2.</b> 이 코드의 핵심 결과는 ‘원을 조금씩 회전시켜 스피로그래프 패턴을 만듭니다’라는 설명과 직접 연결된다.</label><label class="choice"><input type="checkbox" name="q86" value="3" onchange="limit(86,this)"><b>3.</b> 「스피로그래프」에서 extent를 생략했기 때문에 기본 360도 원이 그려진다.</label><label class="choice"><input type="checkbox" name="q86" value="4" onchange="limit(86,this)"><b>4.</b> 72회 × 5도 = 360도이므로 원의 중심 방향 배치가 한 바퀴를 채운다.</label><label class="choice"><input type="checkbox" name="q86" value="5" onchange="limit(86,this)"><b>5.</b> 누적 회전량은 77도이므로 패턴은 한 바퀴에 크게 못 미친다.</label></div>
+  <div class="explain" id="e86"></div>
+</section>
+<section class="q" id="q87">
+  <span class="badge">087 / 100 · 거북이09</span>
+  <h3>087. 크기 변화 스피로그래프</h3>
+  <div class="stem">다음 「크기 변화 스피로그래프」 코드에서 출력 위치 구분의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+t.speed(0)
+
+for i in range(60):
+    t.circle(30 + i)
+    t.left(12)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c87"><label class="choice"><input type="checkbox" name="q87" value="1" onchange="limit(87,this)"><b>1.</b> 이 코드의 핵심 결과는 ‘회전과 반지름 변화를 동시에 적용합니다’라는 설명과 직접 연결된다.</label><label class="choice"><input type="checkbox" name="q87" value="2" onchange="limit(87,this)"><b>2.</b> 이 예제의 반복 구조는 ‘크기 변화 스피로그래프’에서 같은 동작을 여러 번 수행해야 하는 부분을 압축한다.</label><label class="choice"><input type="checkbox" name="q87" value="3" onchange="limit(87,this)"><b>3.</b> 「크기 변화 스피로그래프」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.</label><label class="choice"><input type="checkbox" name="q87" value="4" onchange="limit(87,this)"><b>4.</b> 모든 원의 반지름이 정확히 30으로 고정된다.</label><label class="choice"><input type="checkbox" name="q87" value="5" onchange="limit(87,this)"><b>5.</b> 이 코드에서 ‘크기 변화 스피로그래프’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.</label></div>
+  <div class="explain" id="e87"></div>
+</section>
+<section class="q" id="q88">
+  <span class="badge">088 / 100 · 거북이09</span>
+  <h3>088. 점선 만들기</h3>
+  <div class="stem">다음 「점선 만들기」 코드에서 도형의 수학적 성질의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+
+for _ in range(20):
+    t.pendown()
+    t.forward(10)
+
+    t.penup()
+    t.forward(10)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c88"><label class="choice"><input type="checkbox" name="q88" value="1" onchange="limit(88,this)"><b>1.</b> 펜을 든 구간에서는 위치도 움직이지 않으므로 점선 사이 간격은 0이다.</label><label class="choice"><input type="checkbox" name="q88" value="2" onchange="limit(88,this)"><b>2.</b> 이 코드의 핵심 결과는 ‘펜 상태를 반복적으로 바꾸어 점선을 만듭니다’라는 설명과 직접 연결된다.</label><label class="choice"><input type="checkbox" name="q88" value="3" onchange="limit(88,this)"><b>3.</b> 한 주기에서 10만큼 선을 그리고 10만큼 빈 공간을 만들므로 같은 길이의 선과 간격이 반복된다.</label><label class="choice"><input type="checkbox" name="q88" value="4" onchange="limit(88,this)"><b>4.</b> 이 코드에서 ‘점선 만들기’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.</label><label class="choice"><input type="checkbox" name="q88" value="5" onchange="limit(88,this)"><b>5.</b> 이 예제의 반복 구조는 ‘점선 만들기’에서 같은 동작을 여러 번 수행해야 하는 부분을 압축한다.</label></div>
+  <div class="explain" id="e88"></div>
+</section>
+<section class="q" id="q89">
+  <span class="badge">089 / 100 · 거북이09</span>
+  <h3>089. 격자 그리기</h3>
+  <div class="stem">다음 「격자 그리기」 코드에서 변수 변화 추적의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+t.speed(0)
+
+for y in range(-200, 201, 40):
+    t.penup()
+    t.goto(-200, y)
+    t.pendown()
+    t.goto(200, y)
+
+for x in range(-200, 201, 40):
+    t.penup()
+    t.goto(x, -200)
+    t.pendown()
+    t.goto(x, 200)
+
+turtle.done()</code></pre>
+  <div class="choices" id="c89"><label class="choice"><input type="checkbox" name="q89" value="1" onchange="limit(89,this)"><b>1.</b> 이 코드의 핵심 결과는 ‘이중 반복 대신 두 개의 반복문으로 격자를 만듭니다’라는 설명과 직접 연결된다.</label><label class="choice"><input type="checkbox" name="q89" value="2" onchange="limit(89,this)"><b>2.</b> 끝값 201도 실제 좌표선으로 그려져 각 방향에 12개가 생긴다.</label><label class="choice"><input type="checkbox" name="q89" value="3" onchange="limit(89,this)"><b>3.</b> 이 코드에서 ‘격자 그리기’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.</label><label class="choice"><input type="checkbox" name="q89" value="4" onchange="limit(89,this)"><b>4.</b> -200부터 200까지 40 간격의 위치를 사용하므로 수평선과 수직선이 각각 11개씩 만들어진다.</label><label class="choice"><input type="checkbox" name="q89" value="5" onchange="limit(89,this)"><b>5.</b> 「격자 그리기」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.</label></div>
+  <div class="explain" id="e89"></div>
+</section>
+<section class="q" id="q90">
+  <span class="badge">090 / 100 · 거북이09</span>
+  <h3>090. 체스판</h3>
+  <div class="stem">다음 「체스판」 코드에서 일반화 가능성의 관점으로 판단할 때 옳은 설명 3개를 고르시오.</div>
+  <pre class="code"><code>import turtle
+
+t = turtle.Turtle()
+t.speed(0)
+
+size = 40
+
+for row in range(8):
+    for col in range(8):
+        x = -160 + col * size
+        y = 160 - row * size
+
+        t.penup()
+        t.goto(x, y)
+        t.pendown()
+
+        if (row + col) % 2 == 0:
+            t.begin_fill()
+
+        for _ in range(4):
+            t.forward(size)
+            t.right(90)
+
+        if (row + col) % 2 == 0:
+            t.end_fill()
+
+turtle.done()</code></pre>
+  <div class="choices" id="c90"><label class="choice"><input type="checkbox" name="q90" value="1" onchange="limit(90,this)"><b>1.</b> 이 코드의 핵심 결과는 ‘이중 반복문과 짝홀 조건으로 체스판을 만듭니다’라는 설명과 직접 연결된다.</label><label class="choice"><input type="checkbox" name="q90" value="2" onchange="limit(90,this)"><b>2.</b> 채우기는 `begin_fill()`과 `end_fill()` 사이에서 만든 닫힌 경로를 대상으로 한다.</label><label class="choice"><input type="checkbox" name="q90" value="3" onchange="limit(90,this)"><b>3.</b> end_fill은 채운 색을 다시 투명하게 만드는 명령이다.</label><label class="choice"><input type="checkbox" name="q90" value="4" onchange="limit(90,this)"><b>4.</b> 중첩 반복은 8×8=64개의 칸 위치를 처리한다.</label><label class="choice"><input type="checkbox" name="q90" value="5" onchange="limit(90,this)"><b>5.</b> 중첩 반복이므로 총 16칸만 처리한다.</label></div>
+  <div class="explain" id="e90"></div>
+</section>
+<div class="actions"><button onclick="findMissing()">미완료 확인</button><button class="primary" onclick="grade()">채점하기</button><button id="save" class="hidden" onclick="saveTxt()">TXT 저장</button></div>
+<section id="result" class="result hidden"></section>
+</main><script>
+const Q=[{"id": 81, "title": "테오도로스 와선", "desc": "연속된 직각삼각형으로 만들어지는 테오도로스 와선을 그립니다.", "code": "import turtle\nimport math\n\nt = turtle.Turtle()\nt.speed(0)\n\nscale = 50\nx, y = 1, 0\n\nt.penup()\nt.goto(0, 0)\nt.pendown()\nt.goto(x * scale, y * scale)\n\nfor n in range(1, 17):\n    R = math.sqrt(x*x + y*y)\n\n    new_x = x - y / R\n    new_y = y + x / R\n\n    t.goto(new_x * scale, new_y * scale)\n\n    x, y = new_x, new_y\n\nturtle.done()", "stem": "다음 「테오도로스 와선」 코드에서 좌표 해석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "이 코드의 핵심 결과는 ‘연속된 직각삼각형으로 만들어지는 테오도로스 와선을 그립니다’라는 설명과 직접 연결된다.", "correct": 1, "explanation": "코드의 주요 연산과 Turtle 명령은 실제로 연속된 직각삼각형으로 만들어지는 테오도로스 와선을 그립니다를 구현합니다."}, {"text": "이 코드에서 ‘테오도로스 와선’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.", "correct": 0, "explanation": "실제 그림은 그 이전의 이동·회전·좌표 계산 명령들이 만들며 done()은 이벤트 루프를 유지합니다."}, {"text": "새 점 계산에서 이전 반지름 방향에 수직인 단위 성분을 더해 연속된 직각삼각형 구조를 만든다.", "correct": 1, "explanation": "(-y/R, x/R)은 (x,y)에 수직인 단위벡터입니다."}, {"text": "「테오도로스 와선」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.", "correct": 1, "explanation": "Turtle/Tk 이벤트 루프를 시작하는 역할입니다."}, {"text": "「테오도로스 와선」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.", "correct": 0, "explanation": "거리·각도·좌표 계산에는 수치 자료형이 필요합니다."}], "correct_positions": [1, 3, 4]}, {"id": 82, "title": "극좌표 별 나선", "desc": "극좌표 반지름에 주기 변화를 넣어 별 모양 나선을 만듭니다.", "code": "import turtle\nimport math\n\nt = turtle.Turtle()\nt.speed(0)\nt.penup()\n\nfor i in range(1200):\n    theta = math.radians(i)\n    r = 0.12 * i * (1 + 0.3 * math.sin(5 * theta))\n\n    x = r * math.cos(theta)\n    y = r * math.sin(theta)\n\n    t.goto(x, y)\n    t.pendown()\n\nturtle.done()", "stem": "다음 「극좌표 별 나선」 코드에서 방향각 해석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "이 코드에서 ‘극좌표 별 나선’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.", "correct": 0, "explanation": "실제 그림은 그 이전의 이동·회전·좌표 계산 명령들이 만들며 done()은 이벤트 루프를 유지합니다."}, {"text": "이 코드의 핵심 결과는 ‘극좌표 반지름에 주기 변화를 넣어 별 모양 나선을 만듭니다’라는 설명과 직접 연결된다.", "correct": 1, "explanation": "코드의 주요 연산과 Turtle 명령은 실제로 극좌표 반지름에 주기 변화를 넣어 별 모양 나선을 만듭니다를 구현합니다."}, {"text": "「극좌표 별 나선」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.", "correct": 0, "explanation": "거리·각도·좌표 계산에는 수치 자료형이 필요합니다."}, {"text": "이 예제의 반복 구조는 ‘극좌표 별 나선’에서 같은 동작을 여러 번 수행해야 하는 부분을 압축한다.", "correct": 1, "explanation": "반복문은 같은 명령 묶음을 일정 횟수 또는 자료 개수만큼 실행합니다."}, {"text": "「극좌표 별 나선」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.", "correct": 1, "explanation": "Turtle/Tk 이벤트 루프를 시작하는 역할입니다."}], "correct_positions": [2, 4, 5]}, {"id": 83, "title": "리사주 곡선", "desc": "서로 다른 진동수의 사인 함수를 x, y 좌표에 사용합니다.", "code": "import turtle\nimport math\n\nt = turtle.Turtle()\nt.speed(0)\nt.penup()\n\nfor i in range(2000):\n    theta = math.radians(i)\n\n    x = 200 * math.sin(3 * theta)\n    y = 150 * math.sin(4 * theta)\n\n    t.goto(x, y)\n    t.pendown()\n\nturtle.done()", "stem": "다음 「리사주 곡선」 코드에서 반복횟수 분석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "이 코드의 핵심 결과는 ‘서로 다른 진동수의 사인 함수를 x, y 좌표에 사용합니다’라는 설명과 직접 연결된다.", "correct": 1, "explanation": "코드의 주요 연산과 Turtle 명령은 실제로 서로 다른 진동수의 사인 함수를 x, y 좌표에 사용합니다를 구현합니다."}, {"text": "x와 y의 진동수가 같아 모든 점이 한 직선에만 놓인다.", "correct": 0, "explanation": "진동수가 3과 4로 다릅니다."}, {"text": "x와 y 진동수의 비가 3:4이므로 서로 다른 주기의 진동이 결합된 리사주 도형이 나타난다.", "correct": 1, "explanation": "3θ와 4θ가 각각 x,y를 결정합니다."}, {"text": "「리사주 곡선」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.", "correct": 0, "explanation": "거리·각도·좌표 계산에는 수치 자료형이 필요합니다."}, {"text": "「리사주 곡선」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.", "correct": 1, "explanation": "Turtle/Tk 이벤트 루프를 시작하는 역할입니다."}], "correct_positions": [1, 3, 5]}, {"id": 84, "title": "하트 곡선", "desc": "매개변수 방정식으로 하트 모양을 그립니다.", "code": "import turtle\nimport math\n\nt = turtle.Turtle()\nt.speed(0)\nt.penup()\n\nfor i in range(361):\n    a = math.radians(i)\n\n    x = 16 * math.sin(a) ** 3\n    y = (\n        13 * math.cos(a)\n        - 5 * math.cos(2*a)\n        - 2 * math.cos(3*a)\n        - math.cos(4*a)\n    )\n\n    t.goto(x * 10, y * 10)\n    t.pendown()\n\nturtle.done()", "stem": "다음 「하트 곡선」 코드에서 함수 호출 분석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "이 코드에서 ‘하트 곡선’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.", "correct": 0, "explanation": "실제 그림은 그 이전의 이동·회전·좌표 계산 명령들이 만들며 done()은 이벤트 루프를 유지합니다."}, {"text": "「하트 곡선」에서 코드에 쓰인 숫자를 모두 문자열로 바꾸어도 산술 연산과 Turtle 이동 결과가 완전히 동일하다.", "correct": 0, "explanation": "거리·각도·좌표 계산에는 수치 자료형이 필요합니다."}, {"text": "x는 sin³ 항, y는 여러 cos 배각 항의 합으로 계산되어 하트형 대칭 곡선을 만든다.", "correct": 1, "explanation": "매개변수 하트 식을 그대로 사용합니다."}, {"text": "이 예제의 반복 구조는 ‘하트 곡선’에서 같은 동작을 여러 번 수행해야 하는 부분을 압축한다.", "correct": 1, "explanation": "반복문은 같은 명령 묶음을 일정 횟수 또는 자료 개수만큼 실행합니다."}, {"text": "「하트 곡선」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.", "correct": 1, "explanation": "Turtle/Tk 이벤트 루프를 시작하는 역할입니다."}], "correct_positions": [3, 4, 5]}, {"id": 85, "title": "카디오이드", "desc": "극좌표 카디오이드 곡선을 그립니다.", "code": "import turtle\nimport math\n\nt = turtle.Turtle()\nt.speed(0)\nt.penup()\n\nfor i in range(721):\n    theta = math.radians(i)\n    r = 150 * (1 - math.cos(theta))\n\n    x = r * math.cos(theta)\n    y = r * math.sin(theta)\n\n    t.goto(x, y)\n    t.pendown()\n\nturtle.done()", "stem": "다음 「카디오이드」 코드에서 자료 흐름 분석의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "이 코드의 핵심 결과는 ‘극좌표 카디오이드 곡선을 그립니다’라는 설명과 직접 연결된다.", "correct": 1, "explanation": "코드의 주요 연산과 Turtle 명령은 실제로 극좌표 카디오이드 곡선을 그립니다를 구현합니다."}, {"text": "θ=0일 때 r=0이므로 카디오이드가 원점을 지나는 뾰족점을 갖는다.", "correct": 1, "explanation": "1-cos0=0입니다."}, {"text": "θ=0일 때 r=300이므로 원점에서 가장 멀리 시작한다.", "correct": 0, "explanation": "r=0입니다."}, {"text": "이 코드에서 ‘카디오이드’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.", "correct": 0, "explanation": "실제 그림은 그 이전의 이동·회전·좌표 계산 명령들이 만들며 done()은 이벤트 루프를 유지합니다."}, {"text": "「카디오이드」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.", "correct": 1, "explanation": "Turtle/Tk 이벤트 루프를 시작하는 역할입니다."}], "correct_positions": [1, 2, 5]}, {"id": 86, "title": "스피로그래프", "desc": "원을 조금씩 회전시켜 스피로그래프 패턴을 만듭니다.", "code": "import turtle\n\nt = turtle.Turtle()\nt.speed(0)\n\nfor _ in range(72):\n    t.circle(100)\n    t.left(5)\n\nturtle.done()", "stem": "다음 「스피로그래프」 코드에서 오류 원인 판별의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "「스피로그래프」에서 인수가 하나뿐이므로 100도짜리 원호만 그린다.", "correct": 0, "explanation": "100은 반지름입니다."}, {"text": "이 코드의 핵심 결과는 ‘원을 조금씩 회전시켜 스피로그래프 패턴을 만듭니다’라는 설명과 직접 연결된다.", "correct": 1, "explanation": "코드의 주요 연산과 Turtle 명령은 실제로 원을 조금씩 회전시켜 스피로그래프 패턴을 만듭니다를 구현합니다."}, {"text": "「스피로그래프」에서 extent를 생략했기 때문에 기본 360도 원이 그려진다.", "correct": 1, "explanation": "circle(radius) 기본 extent는 전체 원입니다."}, {"text": "72회 × 5도 = 360도이므로 원의 중심 방향 배치가 한 바퀴를 채운다.", "correct": 1, "explanation": "누적 회전이 360도입니다."}, {"text": "누적 회전량은 77도이므로 패턴은 한 바퀴에 크게 못 미친다.", "correct": 0, "explanation": "곱셈이 필요합니다."}], "correct_positions": [2, 3, 4]}, {"id": 87, "title": "크기 변화 스피로그래프", "desc": "회전과 반지름 변화를 동시에 적용합니다.", "code": "import turtle\n\nt = turtle.Turtle()\nt.speed(0)\n\nfor i in range(60):\n    t.circle(30 + i)\n    t.left(12)\n\nturtle.done()", "stem": "다음 「크기 변화 스피로그래프」 코드에서 출력 위치 구분의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "이 코드의 핵심 결과는 ‘회전과 반지름 변화를 동시에 적용합니다’라는 설명과 직접 연결된다.", "correct": 1, "explanation": "코드의 주요 연산과 Turtle 명령은 실제로 회전과 반지름 변화를 동시에 적용합니다를 구현합니다."}, {"text": "이 예제의 반복 구조는 ‘크기 변화 스피로그래프’에서 같은 동작을 여러 번 수행해야 하는 부분을 압축한다.", "correct": 1, "explanation": "반복문은 같은 명령 묶음을 일정 횟수 또는 자료 개수만큼 실행합니다."}, {"text": "「크기 변화 스피로그래프」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.", "correct": 1, "explanation": "Turtle/Tk 이벤트 루프를 시작하는 역할입니다."}, {"text": "모든 원의 반지름이 정확히 30으로 고정된다.", "correct": 0, "explanation": "30+i입니다."}, {"text": "이 코드에서 ‘크기 변화 스피로그래프’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.", "correct": 0, "explanation": "실제 그림은 그 이전의 이동·회전·좌표 계산 명령들이 만들며 done()은 이벤트 루프를 유지합니다."}], "correct_positions": [1, 2, 3]}, {"id": 88, "title": "점선 만들기", "desc": "펜 상태를 반복적으로 바꾸어 점선을 만듭니다.", "code": "import turtle\n\nt = turtle.Turtle()\n\nfor _ in range(20):\n    t.pendown()\n    t.forward(10)\n\n    t.penup()\n    t.forward(10)\n\nturtle.done()", "stem": "다음 「점선 만들기」 코드에서 도형의 수학적 성질의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "펜을 든 구간에서는 위치도 움직이지 않으므로 점선 사이 간격은 0이다.", "correct": 0, "explanation": "penup에서도 위치는 이동합니다."}, {"text": "이 코드의 핵심 결과는 ‘펜 상태를 반복적으로 바꾸어 점선을 만듭니다’라는 설명과 직접 연결된다.", "correct": 1, "explanation": "코드의 주요 연산과 Turtle 명령은 실제로 펜 상태를 반복적으로 바꾸어 점선을 만듭니다를 구현합니다."}, {"text": "한 주기에서 10만큼 선을 그리고 10만큼 빈 공간을 만들므로 같은 길이의 선과 간격이 반복된다.", "correct": 1, "explanation": "pendown과 penup 각각 forward(10)입니다."}, {"text": "이 코드에서 ‘점선 만들기’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.", "correct": 0, "explanation": "실제 그림은 그 이전의 이동·회전·좌표 계산 명령들이 만들며 done()은 이벤트 루프를 유지합니다."}, {"text": "이 예제의 반복 구조는 ‘점선 만들기’에서 같은 동작을 여러 번 수행해야 하는 부분을 압축한다.", "correct": 1, "explanation": "반복문은 같은 명령 묶음을 일정 횟수 또는 자료 개수만큼 실행합니다."}], "correct_positions": [2, 3, 5]}, {"id": 89, "title": "격자 그리기", "desc": "이중 반복 대신 두 개의 반복문으로 격자를 만듭니다.", "code": "import turtle\n\nt = turtle.Turtle()\nt.speed(0)\n\nfor y in range(-200, 201, 40):\n    t.penup()\n    t.goto(-200, y)\n    t.pendown()\n    t.goto(200, y)\n\nfor x in range(-200, 201, 40):\n    t.penup()\n    t.goto(x, -200)\n    t.pendown()\n    t.goto(x, 200)\n\nturtle.done()", "stem": "다음 「격자 그리기」 코드에서 변수 변화 추적의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "이 코드의 핵심 결과는 ‘이중 반복 대신 두 개의 반복문으로 격자를 만듭니다’라는 설명과 직접 연결된다.", "correct": 1, "explanation": "코드의 주요 연산과 Turtle 명령은 실제로 이중 반복 대신 두 개의 반복문으로 격자를 만듭니다를 구현합니다."}, {"text": "끝값 201도 실제 좌표선으로 그려져 각 방향에 12개가 생긴다.", "correct": 0, "explanation": "range의 stop 값은 포함되지 않습니다."}, {"text": "이 코드에서 ‘격자 그리기’의 결과는 오직 `turtle.done()` 한 줄이 자동 생성한다.", "correct": 0, "explanation": "실제 그림은 그 이전의 이동·회전·좌표 계산 명령들이 만들며 done()은 이벤트 루프를 유지합니다."}, {"text": "-200부터 200까지 40 간격의 위치를 사용하므로 수평선과 수직선이 각각 11개씩 만들어진다.", "correct": 1, "explanation": "(-200,-160,…,200) 총 11개입니다."}, {"text": "「격자 그리기」에서 마지막 `turtle.done()`은 완성된 그래픽 창이 이벤트를 계속 처리하도록 한다.", "correct": 1, "explanation": "Turtle/Tk 이벤트 루프를 시작하는 역할입니다."}], "correct_positions": [1, 4, 5]}, {"id": 90, "title": "체스판", "desc": "이중 반복문과 짝홀 조건으로 체스판을 만듭니다.", "code": "import turtle\n\nt = turtle.Turtle()\nt.speed(0)\n\nsize = 40\n\nfor row in range(8):\n    for col in range(8):\n        x = -160 + col * size\n        y = 160 - row * size\n\n        t.penup()\n        t.goto(x, y)\n        t.pendown()\n\n        if (row + col) % 2 == 0:\n            t.begin_fill()\n\n        for _ in range(4):\n            t.forward(size)\n            t.right(90)\n\n        if (row + col) % 2 == 0:\n            t.end_fill()\n\nturtle.done()", "stem": "다음 「체스판」 코드에서 일반화 가능성의 관점으로 판단할 때 옳은 설명 3개를 고르시오.", "options": [{"text": "이 코드의 핵심 결과는 ‘이중 반복문과 짝홀 조건으로 체스판을 만듭니다’라는 설명과 직접 연결된다.", "correct": 1, "explanation": "코드의 주요 연산과 Turtle 명령은 실제로 이중 반복문과 짝홀 조건으로 체스판을 만듭니다를 구현합니다."}, {"text": "채우기는 `begin_fill()`과 `end_fill()` 사이에서 만든 닫힌 경로를 대상으로 한다.", "correct": 1, "explanation": "두 호출 사이의 폐곡선을 채웁니다."}, {"text": "end_fill은 채운 색을 다시 투명하게 만드는 명령이다.", "correct": 0, "explanation": "채우기를 확정합니다."}, {"text": "중첩 반복은 8×8=64개의 칸 위치를 처리한다.", "correct": 1, "explanation": "행 8개와 열 8개의 모든 조합입니다."}, {"text": "중첩 반복이므로 총 16칸만 처리한다.", "correct": 0, "explanation": "8+8이 아니라 8×8입니다."}], "correct_positions": [1, 2, 4]}];
+const SETNAME="거북이09";
+let RESULT=null;
+const esc=s=>s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+function selected(id){return [...document.querySelectorAll(`input[name=q${id}]:checked`)].map(x=>+x.value)}
+function jumpQ(n){if(n)document.getElementById('q'+n).scrollIntoView({behavior:'smooth',block:'start'})}
+function limit(id,x){if(selected(id).length>3){x.checked=false;alert('한 문항에서는 3개까지만 선택할 수 있습니다.')}progress()}
+function progress(){document.getElementById('prog').textContent=`완료 ${Q.filter(q=>selected(q.id).length===3).length} / 10`}
+function findMissing(){
+ const m=Q.filter(q=>selected(q.id).length!==3);
+ if(!m.length){alert('10문항 모두 3개 선택을 완료했습니다.');return}
+ alert('미완료 문항: '+m.map(x=>String(x.id).padStart(3,'0')).join(', '));jumpQ(m[0].id);
+}
+function grade(){
+ const no=document.getElementById('no').value.trim(), name=document.getElementById('name').value.trim();
+ if(!no||!name){alert('학번과 이름을 입력해 주세요.');return}
+ const m=Q.filter(q=>selected(q.id).length!==3);
+ if(m.length){alert('아직 3개를 선택하지 않은 문항이 있습니다.');jumpQ(m[0].id);return}
+ let score=0, detail=[];
+ Q.forEach(q=>{
+   const u=selected(q.id).sort((a,b)=>a-b), a=q.correct_positions.slice().sort((a,b)=>a-b);
+   const ok=JSON.stringify(u)===JSON.stringify(a); if(ok)score++;
+   const labels=document.querySelectorAll(`#c${q.id} .choice`);
+   q.options.forEach((o,k)=>{
+     labels[k].classList.remove('answer','badpick');
+     if(o.correct)labels[k].classList.add('answer'); else if(u.includes(k+1))labels[k].classList.add('badpick');
+   });
+   const e=document.getElementById('e'+q.id);
+   e.innerHTML=`<div class="${ok?'good':'bad'}">${ok?'정답':'오답'} · 선택 ${u.join(', ')} · 정답 ${a.join(', ')}</div>
+   <p><b>문제 풀이</b> — 이 문제는 「${esc(q.title)}」 코드 자체의 실행 흐름을 근거로 판단합니다.</p>
+   <ol>${q.options.map((o,k)=>`<li><b>${k+1}번 ${o.correct?'[옳음]':'[틀림]'}</b> — ${esc(o.explanation)}</li>`).join('')}</ol>`;
+   e.classList.add('show');
+   detail.push({id:q.id,title:q.title,stem:q.stem,u,a,ok,options:q.options});
+ });
+ RESULT={no,name,score,detail,time:new Date()};
+ const r=document.getElementById('result');
+ r.classList.remove('hidden');
+ r.innerHTML=`<h2>채점 결과</h2><p><b>${esc(no)} ${esc(name)}</b> · <b>${score}점 / 10점</b></p><p>정답 ${score}문항, 오답 ${10-score}문항입니다.</p>`;
+ document.getElementById('save').classList.remove('hidden');
+ r.scrollIntoView({behavior:'smooth'});
+}
+const pad=n=>String(n).padStart(2,'0');
+const ts=d=>`${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}`;
+const ht=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+const safe=s=>s.replace(/[\\/:*?"<>|]/g,'_').replace(/\s+/g,'_');
+function saveTxt(){
+ if(!RESULT)return;
+ const r=RESULT,L=[];
+ L.push(`IDLE Python Turtle ${SETNAME} 평가 결과`,'='.repeat(64),`학번: ${r.no}`,`이름: ${r.name}`,`점수: ${r.score} / 10`,`응시시각: ${ht(r.time)}`,`범위: 081번 ~ 090번`,'형식: 코드별 옳은 것 3개 고르기 5지선다형','='.repeat(64),'');
+ r.detail.forEach(d=>{
+   L.push(`[${String(d.id).padStart(3,'0')}번] ${d.title}`,`문제: ${d.stem}`,`판정: ${d.ok?'정답':'오답'}`,`내 선택: ${d.u.join(', ')}`,`정답: ${d.a.join(', ')}`,'보기별 풀이:');
+   d.options.forEach((o,k)=>L.push(`  ${k+1}. ${o.correct?'[옳음]':'[틀림]'} ${o.text}`,`     해설: ${o.explanation}`));
+   L.push('-'.repeat(64));
+ });
+ const blob=new Blob([L.join('\n')],{type:'text/plain;charset=utf-8'});
+ const a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);
+ a.download=`${safe(r.no)}_${safe(r.name)}_${r.score}_${SETNAME}_${ts(r.time)}.txt`;
+ document.body.appendChild(a);a.click();URL.revokeObjectURL(a.href);a.remove();
+}
+progress();
+</script></body></html>
